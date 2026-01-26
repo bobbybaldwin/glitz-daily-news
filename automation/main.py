@@ -94,7 +94,7 @@ CONTENT_DIR = "content/articles"
 IMAGE_DIR = "static/images"
 DATA_DIR = "automation/data"
 MEMORY_FILE = f"{DATA_DIR}/link_memory.json"
-TARGET_PER_SOURCE = 10 
+TARGET_PER_SOURCE = 5 
 
 # --- HELPER FUNCTIONS ---
 def load_link_memory():
