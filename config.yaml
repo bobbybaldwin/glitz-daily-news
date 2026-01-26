@@ -1,0 +1,69 @@
+baseURL: "https://glitz-daily-news.vercel.app/"
+languageCode: "en-us"
+title: "glitz Daily"
+
+# PENTING: Mengubah link relative menjadi absolute (https://...) 
+# Ini sangat membantu agar Sitemap terbaca valid oleh Google
+canonifyURLs: true
+
+# Aktifkan pembuatan robots.txt otomatis
+enableRobotsTXT: true
+
+permalinks:
+  articles: "/:slug/"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # Mengizinkan HTML mentah (penting untuk kode Iklan/Embed)
+
+# Konfigurasi Output agar Sitemap pasti ter-generate
+outputs:
+  home:
+    - HTML
+    - RSS
+    - Sitemap
+  page:
+    - HTML
+  section:
+    - HTML
+    - RSS
+  taxonomy:
+    - HTML
+    - RSS
+  term:
+    - HTML
+    - RSS
+
+# Konfigurasi Sitemap Khusus (Agar Google lebih suka)
+sitemap:
+  changefreq: "daily"
+  filename: "sitemap.xml"
+  priority: 0.5
+
+services:
+  rss:
+    limit: 50
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+# --- BAGIAN INI SUDAH DIUBAH TOTAL KE glitz NICHE ---
+params:
+  # Description SEO Friendly untuk glitz (Hapus Fabrizio Romano dll)
+  description: "Your trusted source for breaking glitznology news, AI breakthroughs, Gadget reviews, and Cyber Security analysis. We decode the future."
+  
+  # Ganti nama gambar default. 
+  # Pastikan Anda upload gambar 'default-glitz.jpg' ke folder /static/images/
+  defaultImage: "/images/default-glitz.jpg"
+  
+  author:
+    name: "glitz Daily Team"
+    # Gunakan email domain sendiri jika ada, atau gmail resmi situs
+    email: "contact@glitz-daily.vercel.app" 
+
+  # Tambahkan Social Media (Opsional, biar terlihat Pro)
+  # social:
+  #   twitter: "glitzdaily"
+  #   instagram: "glitzdaily"
