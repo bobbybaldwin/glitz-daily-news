@@ -28,7 +28,7 @@ GROQ_KEYS_RAW = os.environ.get("GROQ_API_KEY", "")
 GROQ_API_KEYS = [k.strip() for k in GROQ_KEYS_RAW.split(",") if k.strip()]
 
 WEBSITE_URL = "https://glitz-daily-news.vercel.app" 
-INDEXNOW_KEY = "b35cec0ad41d4d5a86fe7e3f66d45ab2"
+INDEXNOW_KEY = "5b3e50c6d7b845d3ba6768de22595f94"
 GOOGLE_JSON_KEY = os.environ.get("GOOGLE_INDEXING_KEY", "") 
 
 if not GROQ_API_KEYS:
