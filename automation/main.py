@@ -53,7 +53,6 @@ VALID_CATEGORIES = [
     "Pop Culture Trends"
 ]
 
-# 🟢 AUTHORITY SOURCES (External Links Candidates)
 AUTHORITY_SOURCES = [
     "Variety", "The Hollywood Reporter", "Rolling Stone", "Billboard",
     "Deadline", "IGN", "Rotten Tomatoes", "Pitchfork", "Vulture",
@@ -62,26 +61,16 @@ AUTHORITY_SOURCES = [
 
 # 🟢 FALLBACK IMAGES
 FALLBACK_IMAGES = [
-    "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80", # Cinema
-    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80", # Music Mic
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80", # Concert
-    "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=80", # Hollywood
-    "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80",  # Gaming
-    "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=80", # Movie Set
-    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=80", # Netflix
-    "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=1200&q=80", # Club
-    "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=1200&q=80", # Esports
-    "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=80", # Reels
-    "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=80", # DJ
-    "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=80", # Gamer
-    "https://images.unsplash.com/photo-1586899028174-e7098604235b?w=1200&q=80", # Popcorn
-    "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=1200&q=80", # Red Carpet
-    "https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?w=1200&q=80", # Spotlight
-    "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1200&q=80", # Surfer
-    "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?w=1200&q=80", # Fashion
-    "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&q=80", # Event
-    "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=80", # K-Pop
-    "https://images.unsplash.com/photo-1516280440614-6697288d5d38?w=1200&q=80"  # Party
+    "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80",
+    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80",
+    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80",
+    "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=80",
+    "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80",
+    "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=80",
+    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=80",
+    "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=1200&q=80",
+    "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=1200&q=80",
+    "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=80"
 ]
 
 RSS_SOURCES = {
@@ -122,22 +111,34 @@ def get_internal_links():
         links.append(f"- [{title}]({url})")
     return "\n".join(links)
 
-# --- 🟢 JSON REPAIR ENGINE ---
+# --- 🛠️ TEXT REPAIR UTILS (BARU) ---
+def clean_camel_case(text):
+    """Memisahkan kata yang menempel. Contoh: The13Best -> The 13 Best"""
+    if not text: return ""
+    # Pisahkan huruf kecil diikuti huruf besar (popCulture -> pop Culture)
+    text = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', text)
+    # Pisahkan huruf diikuti angka (The13 -> The 13)
+    text = re.sub(r'(?<=[a-zA-Z])(?=\d)', ' ', text)
+    # Pisahkan angka diikuti huruf (13Best -> 13 Best)
+    text = re.sub(r'(?<=\d)(?=[a-zA-Z])', ' ', text)
+    # Hapus spasi ganda
+    return re.sub(r'\s+', ' ', text).strip()
+
 def repair_json(json_str):
     try:
         return json.loads(json_str) 
     except:
+        # Coba perbaiki format JSON yang rusak ringan
         json_str = re.sub(r'(\w+):', r'"\1":', json_str) 
         try: return json.loads(json_str)
         except: return None
 
-# --- 🟢 IMAGE ENGINE (STRICT FILTER) ---
+# --- 🟢 IMAGE ENGINE ---
 def download_image_safe(query, filename):
     if not filename.endswith(".webp"): filename += ".webp"
     path = os.path.join(IMAGE_DIR, filename)
     if os.path.exists(path): return f"/images/{filename}"
 
-    # 🟢 STRATEGI: 80% Pake Stock Photo (Biar Gak Limit & Kelihatan Pro)
     if random.random() < 0.80:
         return download_fallback_image(path, filename)
 
@@ -151,7 +152,6 @@ def download_image_safe(query, filename):
         headers = {'User-Agent': 'Mozilla/5.0'}
         resp = requests.get(url, headers=headers, timeout=25)
         
-        # 🟢 STRICT CHECK: File harus > 50KB. 
         if resp.status_code == 200 and len(resp.content) > 50000: 
             img = Image.open(BytesIO(resp.content)).convert("RGB")
             img = img.resize((1200, 675), Image.Resampling.LANCZOS)
@@ -160,13 +160,10 @@ def download_image_safe(query, filename):
             img = enhancer_sharp.enhance(1.4) 
             enhancer_color = ImageEnhance.Color(img)
             img = enhancer_color.enhance(1.25)
-            enhancer_contrast = ImageEnhance.Contrast(img)
-            img = enhancer_contrast.enhance(1.15)
             
             img.save(path, "WEBP", quality=90)
             return f"/images/{filename}"
         else:
-            print("      ⚠️ Image Rate Limit / File Too Small. Using Stock Photo.")
             return download_fallback_image(path, filename)
     except Exception as e:
         print(f"      ⚠️ Image Gen Error: {e}")
@@ -230,11 +227,17 @@ def get_metadata(title, summary):
     client = Groq(api_key=api_key)
     categories_str = ", ".join(VALID_CATEGORIES)
     
+    # 🔴 PERBAIKAN PROMPT: Menegaskan penggunaan bahasa Inggris normal dengan spasi
     prompt = f"""
     Analyze: "{title}"
+    
+    Task: Create a click-worthy title.
+    CRITICAL: Use proper English spacing. NO CamelCase. No Hashtags.
+    Example: "The 10 Best Movies" (NOT "The10BestMovies")
+
     Return JSON ONLY:
     {{
-        "title": "Clickworthy Title (No quotes)",
+        "title": "Your Title Here (With Spaces)",
         "category": "One of [{categories_str}]",
         "description": "SEO Description 150 chars",
         "keywords": ["tag1", "tag2"]
@@ -293,7 +296,7 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
 
 # --- MAIN LOOP ---
 def main():
-    print("🎬 Starting glitz Daily Automation (Safe Mode)...")
+    print("🎬 Starting glitz Daily Automation (CamelCase Fix Active)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     
@@ -308,7 +311,8 @@ def main():
                 print(f"   🛑 Target reached for {source}. Moving to next.")
                 break
             
-            clean_title = entry.title.split(" - ")[0]
+            # Bersihkan judul RSS dari awal
+            clean_title = clean_camel_case(entry.title.split(" - ")[0])
             print(f"   ✨ Analyzing: {clean_title[:30]}...")
 
             # 1. Metadata
@@ -316,6 +320,9 @@ def main():
             if not meta: 
                 continue
             
+            # 🔴 FORCE FIX TITLE: Terapkan regex cleaner ke output AI juga
+            meta['title'] = clean_camel_case(meta['title'])
+
             if meta['category'] not in VALID_CATEGORIES:
                 meta['category'] = "Movies & Film"
             
@@ -327,15 +334,12 @@ def main():
                 print(f"      ⏭️  Skipped: {slug} (Already Exists)")
                 continue
             
-            # 2. Content Preparation (WITH EXTERNAL LINKS LOGGING)
+            # 2. Content Preparation
             author = random.choice(AUTHOR_PROFILES)
             links = get_internal_links()
-            
-            # 🟢 PILIH 2 SUMBER EXTERNAL SECARA ACAK
             selected_external = random.sample(AUTHORITY_SOURCES, 2)
             external_str = ", ".join(selected_external)
             
-            # 🟢 LOGGING UNTUK ANDA
             print(f"      🔗 Injecting External Sources: {external_str}")
             
             raw_content = write_article(meta, entry.summary, links, author, external_str)
