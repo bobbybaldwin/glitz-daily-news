@@ -126,7 +126,7 @@ CONTENT_DIR = "content/articles"
 IMAGE_DIR = "static/images"
 DATA_DIR = "automation/data"
 MEMORY_FILE = f"{DATA_DIR}/link_memory.json"
-TARGET_PER_SOURCE = 5  # <-- GANTI JUMLAH ARTIKEL DI SINI
+TARGET_PER_SOURCE = 2  # <-- GANTI JUMLAH ARTIKEL DI SINI
 
 # GLOBAL STATE
 AI_ENABLED_SESSION = True  
@@ -438,8 +438,8 @@ url: "/{slug}/"
             
             print(f"      ✅ Published: {filename}")
             success_count += 1
-            print("      ⏳ Cooling down request for 60s...")
-            time.sleep(60) 
+            print("      ⏳ Cooling down request for 10s...")
+            time.sleep(10) 
 
     print("\n🎉 DONE! Automation Finished.")
 
