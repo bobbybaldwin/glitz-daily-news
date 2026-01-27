@@ -59,62 +59,71 @@ RSS_SOURCES = {
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
 }
 
-# 🟢 DATABASE GAMBAR ASLI (HIGH RES - GOOGLE DISCOVER FRIENDLY)
-# Kita gunakan ini sebagai UTAMA agar tidak kena Rate Limit AI lagi.
-CATEGORY_IMAGES_DB = {
+# 🟢 MASSIVE UNIQUE DATABASE (Supaya Gak Kembar)
+# Format: Kategori -> List URL
+RAW_IMAGE_DB = {
     "Movies & Film": [
-        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=90", # Cinema
-        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=90", # Movie Set
-        "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=90", # Popcorn
-        "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=90", # Film Roll
-        "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=90"  # Premiere
+        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=90", 
+        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=90",
+        "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=90",
+        "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=90",
+        "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&q=90",
+        "https://images.unsplash.com/photo-1517604931442-71053e683597?w=1200&q=90",
+        "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=90"
     ],
     "TV Shows & Streaming": [
-        "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=90", # Netflix
-        "https://images.unsplash.com/photo-1522869635100-1f4906a1f07d?w=1200&q=90", # TV Remote
-        "https://images.unsplash.com/photo-1593784697956-14f46924c560?w=1200&q=90", # Living Room TV
-        "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=1200&q=90", # Streaming
-        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=90"  # Tablet Streaming
+        "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=90",
+        "https://images.unsplash.com/photo-1522869635100-1f4906a1f07d?w=1200&q=90", 
+        "https://images.unsplash.com/photo-1593784697956-14f46924c560?w=1200&q=90",
+        "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=1200&q=90",
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=90",
+        "https://images.unsplash.com/photo-1585776245991-cf89dd7fc171?w=1200&q=90",
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&q=90"
     ],
     "Music & Concerts": [
-        "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1200&q=90", # Concert Light
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=90", # Mic
-        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=90", # DJ
-        "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&q=90", # Crowd
-        "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=1200&q=90"  # Club
+        "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1200&q=90",
+        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=90",
+        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=90",
+        "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&q=90",
+        "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=1200&q=90",
+        "https://images.unsplash.com/photo-1459749411177-0473ef7161a8?w=1200&q=90",
+        "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&q=90"
     ],
     "Gaming & Esports": [
-        "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=90", # Gaming Setup
-        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&q=90", # PC RGB
-        "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1200&q=90", # Controller
-        "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=1200&q=90", # Esports Arena
-        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=90"  # Gamer
+        "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=90",
+        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&q=90",
+        "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1200&q=90",
+        "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=1200&q=90",
+        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=90",
+        "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=90",
+        "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=1200&q=90",
+        "https://images.unsplash.com/photo-1612287230217-12ad00f54266?w=1200&q=90"
     ],
     "Celebrity & Lifestyle": [
-        "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?w=1200&q=90", # Red Carpet
-        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=90", # Fashion
-        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1200&q=90", # Model
-        "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=1200&q=90", # Paparazzi vibes
-        "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=1200&q=90"  # Lifestyle
+        "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?w=1200&q=90",
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=90",
+        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1200&q=90",
+        "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=1200&q=90",
+        "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=1200&q=90",
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=90",
+        "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=90"
     ],
     "General": [
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90",
         "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=90",
-        "https://images.unsplash.com/photo-1516280440614-6697288d5d38?w=1200&q=90"
+        "https://images.unsplash.com/photo-1516280440614-6697288d5d38?w=1200&q=90",
+        "https://images.unsplash.com/photo-1550133730-695473e544be?w=1200&q=90"
     ]
 }
-
-AUTHORITY_SOURCES = [
-    "Variety", "The Hollywood Reporter", "Rolling Stone", "Billboard",
-    "Deadline", "IGN", "Rotten Tomatoes", "Pitchfork", "Vulture",
-    "Entertainment Weekly", "Polygon", "Kotaku", "ScreenRant"
-]
 
 CONTENT_DIR = "content/articles"
 IMAGE_DIR = "static/images"
 DATA_DIR = "automation/data"
 MEMORY_FILE = f"{DATA_DIR}/link_memory.json"
-TARGET_PER_SOURCE = 5 
+TARGET_PER_SOURCE = 2 
+
+# GLOBAL STATE untuk AI
+AI_ENABLED_SESSION = True  # Default nyala, akan mati otomatis jika error
 
 # --- HELPER FUNCTIONS ---
 def load_link_memory():
@@ -168,82 +177,99 @@ def repair_markdown_formatting(text):
     text = text.replace("###", "\n\n###").replace("##", "\n\n##")
     return text
 
-# --- 🟢 HYBRID IMAGE ENGINE (Anti-Ban Version) ---
+# --- 🟢 UNIQUE IMAGE ENGINE ---
+def get_unique_stock_image(category):
+    """
+    Mengambil gambar dari database DAN MENGHAPUSNYA dari list
+    agar tidak pernah ada gambar duplikat dalam satu sesi.
+    """
+    global RAW_IMAGE_DB
+    
+    # Ambil list berdasarkan kategori, atau fallback ke General
+    target_list = RAW_IMAGE_DB.get(category, RAW_IMAGE_DB["General"])
+    
+    # Jika stok habis di kategori itu, ambil dari General
+    if not target_list:
+        target_list = RAW_IMAGE_DB["General"]
+        
+    # Jika General juga habis (sangat jarang), reset atau pakai default
+    if not target_list:
+        return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90"
+
+    # PILIH SECARA ACAK
+    selected_url = random.choice(target_list)
+    
+    # HAPUS DARI LIST AGAR TIDAK DIPAKAI LAGI (NO DUPLICATE)
+    target_list.remove(selected_url)
+    
+    return selected_url
+
+def save_image_from_url(url, path):
+    try:
+        r = requests.get(url, timeout=15)
+        if r.status_code == 200:
+            img = Image.open(BytesIO(r.content)).convert("RGB")
+            img = img.resize((1200, 675), Image.Resampling.LANCZOS)
+            # Optimize
+            enhancer_color = ImageEnhance.Color(img)
+            img = enhancer_color.enhance(1.1)
+            img.save(path, "WEBP", quality=85)
+            return True
+    except:
+        pass
+    return False
+
 def clean_prompt_for_ai(text):
     text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
     return text[:100]
 
-def save_and_optimize_image(content, path):
-    try:
-        img = Image.open(BytesIO(content)).convert("RGB")
-        img = img.resize((1200, 675), Image.Resampling.LANCZOS)
-        # Tuning Warna
-        enhancer_color = ImageEnhance.Color(img)
-        img = enhancer_color.enhance(1.15)
-        enhancer_sharp = ImageEnhance.Sharpness(img)
-        img = enhancer_sharp.enhance(1.25)
-        img.save(path, "WEBP", quality=90)
-        return True
-    except Exception as e:
-        print(f"         ❌ Optimization Error: {e}")
-        return False
-
-def download_image_safe(query, category, filename):
+def download_image_smart(query, category, filename):
+    global AI_ENABLED_SESSION
+    
     if not filename.endswith(".webp"): filename += ".webp"
     path = os.path.join(IMAGE_DIR, filename)
     
-    # 1. Cek Apakah File Sudah Ada (Dan Valid > 5KB)
+    # 1. Skip jika file sudah ada
     if os.path.exists(path) and os.path.getsize(path) > 5000:
         return f"/images/{filename}"
 
-    print(f"      🎨 Processing Image for: {query[:20]}...")
+    print(f"      🎨 Processing Image: {query[:20]}...")
 
-    # 2. LOGIKA ANTI-BAN:
-    # Hanya gunakan AI 20% dari waktu. 80% gunakan Stok Foto Asli.
-    # Ini supaya IP anda "dingin" kembali.
-    use_ai = random.random() < 0.20 
-
-    if use_ai:
-        print("         🤖 Method: AI Generation (Flux)...")
+    # 2. LOGIKA AI DENGAN SAKLAR OTOMATIS
+    # Jika AI masih menyala, coba pakai AI
+    if AI_ENABLED_SESSION:
+        print("         🤖 Attempting AI Generation...")
         clean_query = clean_prompt_for_ai(query)
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        
-        # Kita pakai model 'flux' biasa saja agar cepat & stabil
-        # Jangan pakai realism dulu karena server sedang sibuk/limit
         try:
-            prompt = f"cinematic photo of {clean_query}, 4k, hyperrealistic, detailed"
+            prompt = f"cinematic photo of {clean_query}, 4k, realistic, detailed"
             safe_prompt = requests.utils.quote(prompt)
-            url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux&seed={random.randint(1,10000)}"
+            url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux&seed={random.randint(1,99999)}"
             
-            resp = requests.get(url, headers=headers, timeout=25)
+            resp = requests.get(url, timeout=30)
             
-            # CEK PENTING: Jika redirect ke URL aneh atau size kecil -> Rate Limit
+            # CEK APAKAH INI GAMBAR RATE LIMIT?
+            # Gambar Rate Limit biasanya ukurannya spesifik atau kecil, tapi kadang besar.
+            # Cara paling aman: Jika kita sering gagal, matikan AI.
             if resp.status_code == 200 and len(resp.content) > 15000:
-                if save_and_optimize_image(resp.content, path):
-                    print("         ✅ AI Success")
-                    return f"/images/{filename}"
+                # Kita anggap sukses DULU
+                img = Image.open(BytesIO(resp.content)).convert("RGB")
+                img = img.resize((1200, 675), Image.Resampling.LANCZOS)
+                img.save(path, "WEBP", quality=90)
+                print("         ✅ AI Generated Successfully")
+                return f"/images/{filename}"
             else:
-                print("         ⚠️ AI Failed/Rate Limit Detected. Switching to Stock.")
+                print("         ⚠️ AI Rate Limit / Error. Disabling AI for this session.")
+                AI_ENABLED_SESSION = False # MATIKAN AI UNTUK SISA SESI
         except Exception as e:
-            print(f"         ⚠️ AI Error: {e}")
+            print(f"         ⚠️ AI Connection Error. Disabling AI. ({e})")
+            AI_ENABLED_SESSION = False
 
-    # 3. FALLBACK UTAMA: STOK FOTO BERKUALITAS (Unsplash)
-    # Ini dijamin 100% berhasil dan tidak akan kena ban.
-    print(f"         📸 Method: High-Quality Stock Photo ({category})")
+    # 3. FALLBACK: UNIQUE STOCK PHOTO (Anti-Duplicate)
+    print(f"         📸 Using Unique Stock Photo for {category}...")
+    stock_url = get_unique_stock_image(category)
     
-    # Pilih list gambar berdasarkan kategori
-    image_list = CATEGORY_IMAGES_DB.get(category, CATEGORY_IMAGES_DB["General"])
-    # Pilih satu gambar secara acak dari list
-    selected_url = random.choice(image_list)
-    
-    try:
-        r = requests.get(selected_url, timeout=15)
-        if r.status_code == 200:
-            img = Image.open(BytesIO(r.content)).convert("RGB")
-            img = img.resize((1200, 675), Image.Resampling.LANCZOS)
-            img.save(path, "WEBP", quality=90)
-            return f"/images/{filename}"
-    except: pass
+    if save_image_from_url(stock_url, path):
+        return f"/images/{filename}"
     
     return "/images/default-glitz.jpg"
 
@@ -277,7 +303,6 @@ def submit_to_indexnow(url):
 # --- 🟢 CONTENT FORMATTER ---
 def format_content_structure(text):
     text = repair_markdown_formatting(text)
-    
     parts = text.split("\n\n")
     if len(parts) > 3:
         parts.insert(3, "\n{{< ad >}}\n")
@@ -355,9 +380,13 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
 
 # --- MAIN LOOP ---
 def main():
-    print("🎬 Starting glitz Daily Automation (Anti-Ban Mode)...")
+    print("🎬 Starting glitz Daily Automation (Zero Duplicate Mode)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
+    
+    # SHUFFLE IMAGE DB AGAR SETIAP RUN BEDA URUTAN
+    for cat in RAW_IMAGE_DB:
+        random.shuffle(RAW_IMAGE_DB[cat])
     
     for source, url in RSS_SOURCES.items():
         print(f"\n📡 Scanning: {source}...")
@@ -396,9 +425,9 @@ def main():
             
             final_content = format_content_structure(raw_content)
             
-            # 🟢 GENERATE IMAGE (Safe Mode)
+            # 🟢 IMAGE PROCESS (SMART)
             image_query = meta.get('keywords', [meta['title']])[0] 
-            img_path = download_image_safe(image_query, meta['category'], slug)
+            img_path = download_image_smart(image_query, meta['category'], slug)
             
             date_now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00")
             tags_json = json.dumps(meta['keywords'])
@@ -433,9 +462,10 @@ url: "/{slug}/"
             
             print(f"      ✅ Published: {filename}")
             success_count += 1
-            # 🛑 JEDA WAKTU DITAMBAH (45 DETIK) AGAR TIDAK DIBLOKIR LAGI
-            print("      ⏳ Cooling down for 45 seconds...")
-            time.sleep(45) 
+            
+            # 🛑 JEDA WAKTU LAMA (60 Detik) AGAR API DINGIN
+            print("      ⏳ Cooling down request for 60s...")
+            time.sleep(60) 
 
     print("\n🎉 DONE! Automation Finished.")
 
