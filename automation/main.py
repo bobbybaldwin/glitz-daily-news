@@ -53,29 +53,62 @@ VALID_CATEGORIES = [
     "Pop Culture Trends"
 ]
 
-AUTHORITY_SOURCES = [
-    "Variety", "The Hollywood Reporter", "Rolling Stone", "Billboard",
-    "Deadline", "IGN", "Rotten Tomatoes", "Pitchfork", "Vulture",
-    "Entertainment Weekly", "Polygon", "Kotaku", "ScreenRant"
-]
-
 RSS_SOURCES = {
     "Entertainment US": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en",
     "Gaming News": "https://news.google.com/rss/search?q=gaming+news+esports&hl=en-US&gl=US&ceid=US:en",
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
 }
 
-# 🟢 SMART CATEGORY FALLBACKS (Jika AI Gagal Total)
-CATEGORY_FALLBACKS = {
-    "Movies & Film": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80",
-    "TV Shows & Streaming": "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=80",
-    "Music & Concerts": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1200&q=80",
-    "Celebrity & Lifestyle": "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?w=1200&q=80",
-    "Anime & Manga": "https://images.unsplash.com/photo-1541562232579-512a21360020?w=1200&q=80",
-    "Gaming & Esports": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80",
-    "Pop Culture Trends": "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=80",
-    "General": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80"
+# 🟢 DATABASE GAMBAR ASLI (HIGH RES - GOOGLE DISCOVER FRIENDLY)
+# Kita gunakan ini sebagai UTAMA agar tidak kena Rate Limit AI lagi.
+CATEGORY_IMAGES_DB = {
+    "Movies & Film": [
+        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=90", # Cinema
+        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=90", # Movie Set
+        "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=90", # Popcorn
+        "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=90", # Film Roll
+        "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=90"  # Premiere
+    ],
+    "TV Shows & Streaming": [
+        "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=90", # Netflix
+        "https://images.unsplash.com/photo-1522869635100-1f4906a1f07d?w=1200&q=90", # TV Remote
+        "https://images.unsplash.com/photo-1593784697956-14f46924c560?w=1200&q=90", # Living Room TV
+        "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=1200&q=90", # Streaming
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=90"  # Tablet Streaming
+    ],
+    "Music & Concerts": [
+        "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1200&q=90", # Concert Light
+        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=90", # Mic
+        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=90", # DJ
+        "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&q=90", # Crowd
+        "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=1200&q=90"  # Club
+    ],
+    "Gaming & Esports": [
+        "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=90", # Gaming Setup
+        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&q=90", # PC RGB
+        "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1200&q=90", # Controller
+        "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=1200&q=90", # Esports Arena
+        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=90"  # Gamer
+    ],
+    "Celebrity & Lifestyle": [
+        "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?w=1200&q=90", # Red Carpet
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=90", # Fashion
+        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1200&q=90", # Model
+        "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=1200&q=90", # Paparazzi vibes
+        "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=1200&q=90"  # Lifestyle
+    ],
+    "General": [
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90",
+        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=90",
+        "https://images.unsplash.com/photo-1516280440614-6697288d5d38?w=1200&q=90"
+    ]
 }
+
+AUTHORITY_SOURCES = [
+    "Variety", "The Hollywood Reporter", "Rolling Stone", "Billboard",
+    "Deadline", "IGN", "Rotten Tomatoes", "Pitchfork", "Vulture",
+    "Entertainment Weekly", "Polygon", "Kotaku", "ScreenRant"
+]
 
 CONTENT_DIR = "content/articles"
 IMAGE_DIR = "static/images"
@@ -124,38 +157,31 @@ def repair_json(json_str):
         try: return json.loads(json_str)
         except: return None
 
-# --- 🛠️ REPAIR MARKDOWN (Format Fixer) ---
+# --- 🛠️ REPAIR MARKDOWN ---
 def repair_markdown_formatting(text):
     if not text: return ""
-    # Fix Tables
     text = text.replace("| — |", "|---|").replace("|—|", "|---|")
     text = re.sub(r'\|\s*\|', '|\n|', text)
     text = text.replace('|---|---|', '|---|---|\n').replace('|---|', '|---|\n')
-    # Fix Lists
     text = re.sub(r'(?<!\n)\s-\s\[', '\n- [', text) 
     text = re.sub(r'(?<!\n)\s-\s\*\*', '\n- **', text)
-    # Fix Headers spacing
     text = text.replace("###", "\n\n###").replace("##", "\n\n##")
     return text
 
-# --- 🟢 ULTIMATE IMAGE ENGINE (Google Discover Optimized) ---
+# --- 🟢 HYBRID IMAGE ENGINE (Anti-Ban Version) ---
 def clean_prompt_for_ai(text):
-    # Hapus karakter aneh, ambil intinya saja
     text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
-    return text[:100] # Batasi panjang agar AI fokus
+    return text[:100]
 
 def save_and_optimize_image(content, path):
-    """Fungsi pembantu untuk memproses gambar"""
     try:
         img = Image.open(BytesIO(content)).convert("RGB")
         img = img.resize((1200, 675), Image.Resampling.LANCZOS)
-        
-        # Tuning untuk Google Discover (Lebih tajam & Vivid)
+        # Tuning Warna
         enhancer_color = ImageEnhance.Color(img)
-        img = enhancer_color.enhance(1.15) # +15% Vibrance
+        img = enhancer_color.enhance(1.15)
         enhancer_sharp = ImageEnhance.Sharpness(img)
-        img = enhancer_sharp.enhance(1.25) # +25% Tajam
-        
+        img = enhancer_sharp.enhance(1.25)
         img.save(path, "WEBP", quality=90)
         return True
     except Exception as e:
@@ -166,73 +192,59 @@ def download_image_safe(query, category, filename):
     if not filename.endswith(".webp"): filename += ".webp"
     path = os.path.join(IMAGE_DIR, filename)
     
-    # Cek cache file
+    # 1. Cek Apakah File Sudah Ada (Dan Valid > 5KB)
     if os.path.exists(path) and os.path.getsize(path) > 5000:
         return f"/images/{filename}"
 
-    print(f"      🎨 Generating Discover Image for: {query[:20]}...")
-    clean_query = clean_prompt_for_ai(query)
-    headers = {'User-Agent': 'Mozilla/5.0'}
+    print(f"      🎨 Processing Image for: {query[:20]}...")
 
-    # ---------------------------------------------------------
-    # TIER 1: FLUX-REALISM (Target: Google Discover)
-    # ---------------------------------------------------------
-    try:
-        # Prompt khusus Realism
-        prompt_realism = f"editorial photography of {clean_query}, award winning photo, 8k, highly detailed, dramatic lighting, depth of field, f/1.8, bokeh, no text"
-        safe_prompt = requests.utils.quote(prompt_realism)
-        
-        # Timeout kita naikkan jadi 45 detik demi kualitas
-        url_realism = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux-realism&seed={random.randint(1,10000)}"
-        
-        resp = requests.get(url_realism, headers=headers, timeout=45)
-        
-        if resp.status_code == 200 and len(resp.content) > 20000:
-            if save_and_optimize_image(resp.content, path):
-                print("         ✅ Tier 1: Flux-Realism Success")
-                return f"/images/{filename}"
-        
-        print("         ⚠️ Tier 1 Failed/Timeout. Switching to Tier 2...")
-    except Exception as e:
-        print(f"         ⚠️ Tier 1 Error: {e}")
+    # 2. LOGIKA ANTI-BAN:
+    # Hanya gunakan AI 20% dari waktu. 80% gunakan Stok Foto Asli.
+    # Ini supaya IP anda "dingin" kembali.
+    use_ai = random.random() < 0.20 
 
-    # ---------------------------------------------------------
-    # TIER 2: FLUX STANDARD + "FAKE REALISM" PROMPT
-    # (Jauh lebih stabil, tapi kita paksa jadi realistis via prompt)
-    # ---------------------------------------------------------
-    try:
-        # Prompt kita perkeras agar Flux biasa terlihat seperti Realism
-        prompt_fake_realism = f"hyperrealistic photo of {clean_query}, 4k resolution, cinematic focus, sharp details, professional photography, vivid colors"
-        safe_prompt_2 = requests.utils.quote(prompt_fake_realism)
+    if use_ai:
+        print("         🤖 Method: AI Generation (Flux)...")
+        clean_query = clean_prompt_for_ai(query)
+        headers = {'User-Agent': 'Mozilla/5.0'}
         
-        url_flux = f"https://image.pollinations.ai/prompt/{safe_prompt_2}?width=1280&height=720&nologo=true&model=flux&seed={random.randint(1,10000)}"
-        
-        resp = requests.get(url_flux, headers=headers, timeout=30)
-        
-        if resp.status_code == 200 and len(resp.content) > 20000:
-            if save_and_optimize_image(resp.content, path):
-                print("         ✅ Tier 2: Flux (Enhanced) Success")
-                return f"/images/{filename}"
+        # Kita pakai model 'flux' biasa saja agar cepat & stabil
+        # Jangan pakai realism dulu karena server sedang sibuk/limit
+        try:
+            prompt = f"cinematic photo of {clean_query}, 4k, hyperrealistic, detailed"
+            safe_prompt = requests.utils.quote(prompt)
+            url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux&seed={random.randint(1,10000)}"
             
-    except Exception as e:
-        print(f"         ⚠️ Tier 2 Error: {e}")
+            resp = requests.get(url, headers=headers, timeout=25)
+            
+            # CEK PENTING: Jika redirect ke URL aneh atau size kecil -> Rate Limit
+            if resp.status_code == 200 and len(resp.content) > 15000:
+                if save_and_optimize_image(resp.content, path):
+                    print("         ✅ AI Success")
+                    return f"/images/{filename}"
+            else:
+                print("         ⚠️ AI Failed/Rate Limit Detected. Switching to Stock.")
+        except Exception as e:
+            print(f"         ⚠️ AI Error: {e}")
 
-    # ---------------------------------------------------------
-    # TIER 3: SMART CATEGORY STOCK (Anti-Gagal)
-    # ---------------------------------------------------------
-    print(f"      ❌ AI Gen Failed. Using Fallback for: {category}")
-    return download_category_fallback(category, path, filename)
-
-def download_category_fallback(category, path, filename):
-    fallback_url = CATEGORY_FALLBACKS.get(category, CATEGORY_FALLBACKS["General"])
+    # 3. FALLBACK UTAMA: STOK FOTO BERKUALITAS (Unsplash)
+    # Ini dijamin 100% berhasil dan tidak akan kena ban.
+    print(f"         📸 Method: High-Quality Stock Photo ({category})")
+    
+    # Pilih list gambar berdasarkan kategori
+    image_list = CATEGORY_IMAGES_DB.get(category, CATEGORY_IMAGES_DB["General"])
+    # Pilih satu gambar secara acak dari list
+    selected_url = random.choice(image_list)
+    
     try:
-        r = requests.get(fallback_url, timeout=15)
+        r = requests.get(selected_url, timeout=15)
         if r.status_code == 200:
             img = Image.open(BytesIO(r.content)).convert("RGB")
             img = img.resize((1200, 675), Image.Resampling.LANCZOS)
-            img.save(path, "WEBP", quality=85)
+            img.save(path, "WEBP", quality=90)
             return f"/images/{filename}"
     except: pass
+    
     return "/images/default-glitz.jpg"
 
 # --- 🟢 INDEXING ---
@@ -343,7 +355,7 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
 
 # --- MAIN LOOP ---
 def main():
-    print("🎬 Starting glitz Daily Automation (Ultimate Edition)...")
+    print("🎬 Starting glitz Daily Automation (Anti-Ban Mode)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     
@@ -364,7 +376,7 @@ def main():
             
             meta['title'] = clean_camel_case(meta['title'])
             if meta['category'] not in VALID_CATEGORIES:
-                meta['category'] = "Movies & Film"
+                meta['category'] = "Pop Culture Trends"
             
             slug = slugify(meta['title'])
             filename = f"{slug}.md"
@@ -384,8 +396,7 @@ def main():
             
             final_content = format_content_structure(raw_content)
             
-            # 🟢 SMART IMAGE GENERATION (Tiered Strategy)
-            # Prioritas keyword untuk gambar: Main Keyword -> Title
+            # 🟢 GENERATE IMAGE (Safe Mode)
             image_query = meta.get('keywords', [meta['title']])[0] 
             img_path = download_image_safe(image_query, meta['category'], slug)
             
@@ -422,7 +433,9 @@ url: "/{slug}/"
             
             print(f"      ✅ Published: {filename}")
             success_count += 1
-            time.sleep(15) 
+            # 🛑 JEDA WAKTU DITAMBAH (45 DETIK) AGAR TIDAK DIBLOKIR LAGI
+            print("      ⏳ Cooling down for 45 seconds...")
+            time.sleep(45) 
 
     print("\n🎉 DONE! Automation Finished.")
 
