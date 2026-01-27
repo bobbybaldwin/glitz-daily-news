@@ -59,7 +59,6 @@ AUTHORITY_SOURCES = [
     "Entertainment Weekly", "Polygon", "Kotaku", "ScreenRant"
 ]
 
-# 🟢 FALLBACK IMAGES
 FALLBACK_IMAGES = [
     "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80",
     "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80",
@@ -108,30 +107,58 @@ def get_internal_links():
     items = random.sample(items, count)
     links = []
     for title, url in items:
+        # Gunakan format bullet point yang tegas
         links.append(f"- [{title}]({url})")
     return "\n".join(links)
 
-# --- 🛠️ TEXT REPAIR UTILS (BARU) ---
 def clean_camel_case(text):
-    """Memisahkan kata yang menempel. Contoh: The13Best -> The 13 Best"""
     if not text: return ""
-    # Pisahkan huruf kecil diikuti huruf besar (popCulture -> pop Culture)
     text = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', text)
-    # Pisahkan huruf diikuti angka (The13 -> The 13)
     text = re.sub(r'(?<=[a-zA-Z])(?=\d)', ' ', text)
-    # Pisahkan angka diikuti huruf (13Best -> 13 Best)
     text = re.sub(r'(?<=\d)(?=[a-zA-Z])', ' ', text)
-    # Hapus spasi ganda
     return re.sub(r'\s+', ' ', text).strip()
 
 def repair_json(json_str):
     try:
         return json.loads(json_str) 
     except:
-        # Coba perbaiki format JSON yang rusak ringan
         json_str = re.sub(r'(\w+):', r'"\1":', json_str) 
         try: return json.loads(json_str)
         except: return None
+
+# --- 🛠️ NEW: REPAIR MARKDOWN (TABEL & LIST) ---
+def repair_markdown_formatting(text):
+    """
+    Memperbaiki tabel dan list yang 'gepeng' (satu baris) menjadi format Markdown yang benar.
+    """
+    if not text: return ""
+
+    # 1. PERBAIKI TABEL (Penyebab utama layout berantakan)
+    # Ganti separator em-dash (—) atau dash (-) yang nyangkut
+    text = text.replace("| — |", "|---|").replace("|—|", "|---|")
+    
+    # Masalah: "| Col 1 | Col 2 | | Val 1 |" -> Baris nempel
+    # Solusi: Jika ada "| |", itu tandanya baris baru yang hilang.
+    text = re.sub(r'\|\s*\|', '|\n|', text)
+    
+    # Pastikan Header Table terpisah dari body
+    text = text.replace('|---|---|', '|---|---|\n')
+    text = text.replace('|---|', '|---|\n')
+
+    # 2. PERBAIKI INTERNAL LINKS & LIST
+    # Masalah: "articles: - Link 1 - Link 2"
+    # Solusi: Paksa enter sebelum bullet point strip (-) ATAU bintang (*)
+    # Regex lookbehind: Jika ada spasi sebelum strip, dan bukan di awal baris, beri enter.
+    # Hati-hati: Jangan merusak kalimat biasa "word - word". 
+    # Kita targetkan yang terlihat seperti list item "- [Link]" atau "- **Bold**"
+    text = re.sub(r'(?<!\n)\s-\s\[', '\n- [', text) 
+    text = re.sub(r'(?<!\n)\s-\s\*\*', '\n- **', text)
+
+    # 3. PASTIKAN SPASI ANTAR SECTION
+    text = text.replace("###", "\n\n###")
+    text = text.replace("##", "\n\n##")
+    
+    return text
 
 # --- 🟢 IMAGE ENGINE ---
 def download_image_safe(query, filename):
@@ -165,8 +192,7 @@ def download_image_safe(query, filename):
             return f"/images/{filename}"
         else:
             return download_fallback_image(path, filename)
-    except Exception as e:
-        print(f"      ⚠️ Image Gen Error: {e}")
+    except:
         return download_fallback_image(path, filename)
 
 def download_fallback_image(path, filename):
@@ -191,8 +217,7 @@ def submit_to_google(url):
         body = {"url": url, "type": "URL_UPDATED"}
         service.urlNotifications().publish(body=body).execute()
         print(f"      🚀 Google Indexing Submitted")
-    except Exception as e:
-        pass
+    except: pass
 
 def submit_to_indexnow(url):
     try:
@@ -210,6 +235,9 @@ def submit_to_indexnow(url):
 
 # --- 🟢 CONTENT FORMATTER ---
 def format_content_structure(text):
+    # Panggil fungsi perbaikan Markdown TERLEBIH DAHULU
+    text = repair_markdown_formatting(text)
+    
     parts = text.split("\n\n")
     if len(parts) > 3:
         parts.insert(3, "\n{{< ad >}}\n")
@@ -227,17 +255,12 @@ def get_metadata(title, summary):
     client = Groq(api_key=api_key)
     categories_str = ", ".join(VALID_CATEGORIES)
     
-    # 🔴 PERBAIKAN PROMPT: Menegaskan penggunaan bahasa Inggris normal dengan spasi
     prompt = f"""
     Analyze: "{title}"
-    
-    Task: Create a click-worthy title.
-    CRITICAL: Use proper English spacing. NO CamelCase. No Hashtags.
-    Example: "The 10 Best Movies" (NOT "The10BestMovies")
-
+    Task: Create a click-worthy title. Use proper English spacing. NO CamelCase.
     Return JSON ONLY:
     {{
-        "title": "Your Title Here (With Spaces)",
+        "title": "Title With Spaces",
         "category": "One of [{categories_str}]",
         "description": "SEO Description 150 chars",
         "keywords": ["tag1", "tag2"]
@@ -251,35 +274,35 @@ def get_metadata(title, summary):
             temperature=0.6
         )
         return repair_json(chat.choices[0].message.content)
-    except Exception as e:
-        print(f"      ❌ Groq Metadata Error: {e}")
-        return None
+    except: return None
 
 def write_article(metadata, summary, internal_links, author, external_sources_str):
     api_key = random.choice(GROQ_API_KEYS)
     client = Groq(api_key=api_key)
     
+    # 🔴 PERBAIKAN PROMPT: Instruksi Tegas untuk Formatting
     prompt = f"""
     You are {author}. Write a 1000-word article on: "{metadata['title']}"
     Context: {summary}
     
-    INTERNAL LINKS (Inject these):
+    INTERNAL LINKS (Inject these exactly as a Bullet List):
     {internal_links}
     
-    EXTERNAL AUTHORITY (Cite these using MARKDOWN LINKS e.g. [Source](url)):
-    {external_sources_str}
+    EXTERNAL SOURCES: {external_sources_str}
     
     STRUCTURE RULES:
-    1. **Hook** (No "Introduction" header).
+    1. **Hook**: Strong opening.
     2. **Unique H2 Headline**: Creative title.
-    3. **Key Details (H2)**: Markdown Table required.
-    4. **Social Reactions (H2)**: Specific header.
-    5. **Must Read (H2)**: Paste INTERNAL LINKS here.
-    6. **Industry Insight (H2)**: Discuss impact and CITATION of external sources ({external_sources_str}). You MUST create a hyperlink.
-    7. **Conclusion (H2)**: Creative header.
-    8. **FAQ (H2)**: 3 Questions/Answers (Q: / A: format).
+    3. **Key Details (H2)**: Create a MARKDOWN TABLE. 
+       ⚠️ IMPORTANT: Put a blank line BEFORE and AFTER the table. 
+       Format: | Header | Header |
+    4. **Must Read (H2)**: Paste the INTERNAL LINKS as a vertical Bullet List.
+       ⚠️ IMPORTANT: Start each link on a NEW LINE with a dash.
+    5. **Industry Insight (H2)**: Analysis citing {external_sources_str}.
+    6. **Conclusion (H2)**: Summary.
+    7. **FAQ (H2)**: 3 Q&A.
 
-    IMPORTANT: Output MARKDOWN only. Finish the article.
+    Output MARKDOWN only.
     """
     
     try:
@@ -290,13 +313,11 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
             max_tokens=6500 
         )
         return chat.choices[0].message.content
-    except Exception as e:
-        print(f"      ❌ Groq Writing Error: {e}")
-        return None
+    except: return None
 
 # --- MAIN LOOP ---
 def main():
-    print("🎬 Starting glitz Daily Automation (CamelCase Fix Active)...")
+    print("🎬 Starting glitz Daily Automation (Markdown Fix Active)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     
@@ -308,21 +329,15 @@ def main():
         success_count = 0
         for entry in feed.entries:
             if success_count >= TARGET_PER_SOURCE: 
-                print(f"   🛑 Target reached for {source}. Moving to next.")
                 break
             
-            # Bersihkan judul RSS dari awal
             clean_title = clean_camel_case(entry.title.split(" - ")[0])
             print(f"   ✨ Analyzing: {clean_title[:30]}...")
 
-            # 1. Metadata
             meta = get_metadata(clean_title, entry.summary)
-            if not meta: 
-                continue
+            if not meta: continue
             
-            # 🔴 FORCE FIX TITLE: Terapkan regex cleaner ke output AI juga
             meta['title'] = clean_camel_case(meta['title'])
-
             if meta['category'] not in VALID_CATEGORIES:
                 meta['category'] = "Movies & Film"
             
@@ -331,28 +346,21 @@ def main():
             filepath = os.path.join(CONTENT_DIR, filename)
             
             if os.path.exists(filepath):
-                print(f"      ⏭️  Skipped: {slug} (Already Exists)")
+                print(f"      ⏭️  Skipped (Exists)")
                 continue
             
-            # 2. Content Preparation
             author = random.choice(AUTHOR_PROFILES)
             links = get_internal_links()
             selected_external = random.sample(AUTHORITY_SOURCES, 2)
             external_str = ", ".join(selected_external)
             
-            print(f"      🔗 Injecting External Sources: {external_str}")
-            
             raw_content = write_article(meta, entry.summary, links, author, external_str)
-            
             if not raw_content: continue
             
-            # 3. Process
+            # 🟢 STEP PENTING: FORMATTING
             final_content = format_content_structure(raw_content)
             
-            # 4. Image
             img_path = download_image_safe(meta['title'], slug)
-            
-            # 5. Save
             date_now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00")
             tags_json = json.dumps(meta['keywords'])
             
@@ -380,13 +388,11 @@ url: "/{slug}/"
             
             save_link_to_memory(meta['title'], slug)
             
-            # 6. Indexing
             full_url = f"{WEBSITE_URL}/{slug}/"
             submit_to_indexnow(full_url)
             submit_to_google(full_url)
             
             print(f"      ✅ Published: {filename}")
-            
             success_count += 1
             time.sleep(15) 
 
