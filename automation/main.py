@@ -59,8 +59,14 @@ RSS_SOURCES = {
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
 }
 
+# 🟢 AUTHORITY SOURCES (Bagian ini yang tadi hilang)
+AUTHORITY_SOURCES = [
+    "Variety", "The Hollywood Reporter", "Rolling Stone", "Billboard",
+    "Deadline", "IGN", "Rotten Tomatoes", "Pitchfork", "Vulture",
+    "Entertainment Weekly", "Polygon", "Kotaku", "ScreenRant"
+]
+
 # 🟢 MASSIVE UNIQUE DATABASE (Supaya Gak Kembar)
-# Format: Kategori -> List URL
 RAW_IMAGE_DB = {
     "Movies & Film": [
         "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=90", 
@@ -120,10 +126,10 @@ CONTENT_DIR = "content/articles"
 IMAGE_DIR = "static/images"
 DATA_DIR = "automation/data"
 MEMORY_FILE = f"{DATA_DIR}/link_memory.json"
-TARGET_PER_SOURCE = 2 
+TARGET_PER_SOURCE = 5  # <-- GANTI JUMLAH ARTIKEL DI SINI
 
-# GLOBAL STATE untuk AI
-AI_ENABLED_SESSION = True  # Default nyala, akan mati otomatis jika error
+# GLOBAL STATE
+AI_ENABLED_SESSION = True  
 
 # --- HELPER FUNCTIONS ---
 def load_link_memory():
@@ -179,29 +185,13 @@ def repair_markdown_formatting(text):
 
 # --- 🟢 UNIQUE IMAGE ENGINE ---
 def get_unique_stock_image(category):
-    """
-    Mengambil gambar dari database DAN MENGHAPUSNYA dari list
-    agar tidak pernah ada gambar duplikat dalam satu sesi.
-    """
     global RAW_IMAGE_DB
-    
-    # Ambil list berdasarkan kategori, atau fallback ke General
     target_list = RAW_IMAGE_DB.get(category, RAW_IMAGE_DB["General"])
-    
-    # Jika stok habis di kategori itu, ambil dari General
-    if not target_list:
-        target_list = RAW_IMAGE_DB["General"]
-        
-    # Jika General juga habis (sangat jarang), reset atau pakai default
-    if not target_list:
-        return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90"
+    if not target_list: target_list = RAW_IMAGE_DB["General"]
+    if not target_list: return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90"
 
-    # PILIH SECARA ACAK
     selected_url = random.choice(target_list)
-    
-    # HAPUS DARI LIST AGAR TIDAK DIPAKAI LAGI (NO DUPLICATE)
-    target_list.remove(selected_url)
-    
+    target_list.remove(selected_url) # HAPUS DARI LIST AGAR TIDAK DUPLIKAT
     return selected_url
 
 def save_image_from_url(url, path):
@@ -210,13 +200,11 @@ def save_image_from_url(url, path):
         if r.status_code == 200:
             img = Image.open(BytesIO(r.content)).convert("RGB")
             img = img.resize((1200, 675), Image.Resampling.LANCZOS)
-            # Optimize
             enhancer_color = ImageEnhance.Color(img)
             img = enhancer_color.enhance(1.1)
             img.save(path, "WEBP", quality=85)
             return True
-    except:
-        pass
+    except: pass
     return False
 
 def clean_prompt_for_ai(text):
@@ -225,18 +213,14 @@ def clean_prompt_for_ai(text):
 
 def download_image_smart(query, category, filename):
     global AI_ENABLED_SESSION
-    
     if not filename.endswith(".webp"): filename += ".webp"
     path = os.path.join(IMAGE_DIR, filename)
     
-    # 1. Skip jika file sudah ada
     if os.path.exists(path) and os.path.getsize(path) > 5000:
         return f"/images/{filename}"
 
     print(f"      🎨 Processing Image: {query[:20]}...")
 
-    # 2. LOGIKA AI DENGAN SAKLAR OTOMATIS
-    # Jika AI masih menyala, coba pakai AI
     if AI_ENABLED_SESSION:
         print("         🤖 Attempting AI Generation...")
         clean_query = clean_prompt_for_ai(query)
@@ -246,28 +230,21 @@ def download_image_smart(query, category, filename):
             url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux&seed={random.randint(1,99999)}"
             
             resp = requests.get(url, timeout=30)
-            
-            # CEK APAKAH INI GAMBAR RATE LIMIT?
-            # Gambar Rate Limit biasanya ukurannya spesifik atau kecil, tapi kadang besar.
-            # Cara paling aman: Jika kita sering gagal, matikan AI.
             if resp.status_code == 200 and len(resp.content) > 15000:
-                # Kita anggap sukses DULU
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
                 img = img.resize((1200, 675), Image.Resampling.LANCZOS)
                 img.save(path, "WEBP", quality=90)
                 print("         ✅ AI Generated Successfully")
                 return f"/images/{filename}"
             else:
-                print("         ⚠️ AI Rate Limit / Error. Disabling AI for this session.")
-                AI_ENABLED_SESSION = False # MATIKAN AI UNTUK SISA SESI
+                print("         ⚠️ AI Rate Limit. Disabling AI.")
+                AI_ENABLED_SESSION = False 
         except Exception as e:
-            print(f"         ⚠️ AI Connection Error. Disabling AI. ({e})")
+            print(f"         ⚠️ AI Error. Disabling AI. ({e})")
             AI_ENABLED_SESSION = False
 
-    # 3. FALLBACK: UNIQUE STOCK PHOTO (Anti-Duplicate)
     print(f"         📸 Using Unique Stock Photo for {category}...")
     stock_url = get_unique_stock_image(category)
-    
     if save_image_from_url(stock_url, path):
         return f"/images/{filename}"
     
@@ -425,7 +402,6 @@ def main():
             
             final_content = format_content_structure(raw_content)
             
-            # 🟢 IMAGE PROCESS (SMART)
             image_query = meta.get('keywords', [meta['title']])[0] 
             img_path = download_image_smart(image_query, meta['category'], slug)
             
@@ -462,8 +438,6 @@ url: "/{slug}/"
             
             print(f"      ✅ Published: {filename}")
             success_count += 1
-            
-            # 🛑 JEDA WAKTU LAMA (60 Detik) AGAR API DINGIN
             print("      ⏳ Cooling down request for 60s...")
             time.sleep(60) 
 
