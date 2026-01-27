@@ -59,23 +59,22 @@ AUTHORITY_SOURCES = [
     "Entertainment Weekly", "Polygon", "Kotaku", "ScreenRant"
 ]
 
-FALLBACK_IMAGES = [
-    "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80",
-    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80",
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80",
-    "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=80",
-    "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80",
-    "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=80",
-    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=80",
-    "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=1200&q=80",
-    "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=1200&q=80",
-    "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=80"
-]
-
 RSS_SOURCES = {
     "Entertainment US": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en",
     "Gaming News": "https://news.google.com/rss/search?q=gaming+news+esports&hl=en-US&gl=US&ceid=US:en",
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
+}
+
+# 🟢 SMART CATEGORY FALLBACKS (Jika AI Gagal Total)
+CATEGORY_FALLBACKS = {
+    "Movies & Film": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80",
+    "TV Shows & Streaming": "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=80",
+    "Music & Concerts": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1200&q=80",
+    "Celebrity & Lifestyle": "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?w=1200&q=80",
+    "Anime & Manga": "https://images.unsplash.com/photo-1541562232579-512a21360020?w=1200&q=80",
+    "Gaming & Esports": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80",
+    "Pop Culture Trends": "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=80",
+    "General": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80"
 }
 
 CONTENT_DIR = "content/articles"
@@ -107,7 +106,6 @@ def get_internal_links():
     items = random.sample(items, count)
     links = []
     for title, url in items:
-        # Gunakan format bullet point yang tegas
         links.append(f"- [{title}]({url})")
     return "\n".join(links)
 
@@ -126,85 +124,116 @@ def repair_json(json_str):
         try: return json.loads(json_str)
         except: return None
 
-# --- 🛠️ NEW: REPAIR MARKDOWN (TABEL & LIST) ---
+# --- 🛠️ REPAIR MARKDOWN (Format Fixer) ---
 def repair_markdown_formatting(text):
-    """
-    Memperbaiki tabel dan list yang 'gepeng' (satu baris) menjadi format Markdown yang benar.
-    """
     if not text: return ""
-
-    # 1. PERBAIKI TABEL (Penyebab utama layout berantakan)
-    # Ganti separator em-dash (—) atau dash (-) yang nyangkut
+    # Fix Tables
     text = text.replace("| — |", "|---|").replace("|—|", "|---|")
-    
-    # Masalah: "| Col 1 | Col 2 | | Val 1 |" -> Baris nempel
-    # Solusi: Jika ada "| |", itu tandanya baris baru yang hilang.
     text = re.sub(r'\|\s*\|', '|\n|', text)
-    
-    # Pastikan Header Table terpisah dari body
-    text = text.replace('|---|---|', '|---|---|\n')
-    text = text.replace('|---|', '|---|\n')
-
-    # 2. PERBAIKI INTERNAL LINKS & LIST
-    # Masalah: "articles: - Link 1 - Link 2"
-    # Solusi: Paksa enter sebelum bullet point strip (-) ATAU bintang (*)
-    # Regex lookbehind: Jika ada spasi sebelum strip, dan bukan di awal baris, beri enter.
-    # Hati-hati: Jangan merusak kalimat biasa "word - word". 
-    # Kita targetkan yang terlihat seperti list item "- [Link]" atau "- **Bold**"
+    text = text.replace('|---|---|', '|---|---|\n').replace('|---|', '|---|\n')
+    # Fix Lists
     text = re.sub(r'(?<!\n)\s-\s\[', '\n- [', text) 
     text = re.sub(r'(?<!\n)\s-\s\*\*', '\n- **', text)
-
-    # 3. PASTIKAN SPASI ANTAR SECTION
-    text = text.replace("###", "\n\n###")
-    text = text.replace("##", "\n\n##")
-    
+    # Fix Headers spacing
+    text = text.replace("###", "\n\n###").replace("##", "\n\n##")
     return text
 
-# --- 🟢 IMAGE ENGINE ---
-def download_image_safe(query, filename):
+# --- 🟢 ULTIMATE IMAGE ENGINE (Google Discover Optimized) ---
+def clean_prompt_for_ai(text):
+    # Hapus karakter aneh, ambil intinya saja
+    text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    return text[:100] # Batasi panjang agar AI fokus
+
+def save_and_optimize_image(content, path):
+    """Fungsi pembantu untuk memproses gambar"""
+    try:
+        img = Image.open(BytesIO(content)).convert("RGB")
+        img = img.resize((1200, 675), Image.Resampling.LANCZOS)
+        
+        # Tuning untuk Google Discover (Lebih tajam & Vivid)
+        enhancer_color = ImageEnhance.Color(img)
+        img = enhancer_color.enhance(1.15) # +15% Vibrance
+        enhancer_sharp = ImageEnhance.Sharpness(img)
+        img = enhancer_sharp.enhance(1.25) # +25% Tajam
+        
+        img.save(path, "WEBP", quality=90)
+        return True
+    except Exception as e:
+        print(f"         ❌ Optimization Error: {e}")
+        return False
+
+def download_image_safe(query, category, filename):
     if not filename.endswith(".webp"): filename += ".webp"
     path = os.path.join(IMAGE_DIR, filename)
-    if os.path.exists(path): return f"/images/{filename}"
-
-    if random.random() < 0.80:
-        return download_fallback_image(path, filename)
-
-    print(f"      🎨 Generating Bright Image for: {query[:20]}...")
-
-    try:
-        prompt = f"{query}, bright studio lighting, vibrant colors, 8k resolution, hyperrealistic, high contrast, pop culture aesthetic, award winning photography, golden hour, clear focus"
-        safe_prompt = requests.utils.quote(prompt[:300])
-        url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux-realism&seed={random.randint(1,10000)}"
-        
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        resp = requests.get(url, headers=headers, timeout=25)
-        
-        if resp.status_code == 200 and len(resp.content) > 50000: 
-            img = Image.open(BytesIO(resp.content)).convert("RGB")
-            img = img.resize((1200, 675), Image.Resampling.LANCZOS)
-            
-            enhancer_sharp = ImageEnhance.Sharpness(img)
-            img = enhancer_sharp.enhance(1.4) 
-            enhancer_color = ImageEnhance.Color(img)
-            img = enhancer_color.enhance(1.25)
-            
-            img.save(path, "WEBP", quality=90)
-            return f"/images/{filename}"
-        else:
-            return download_fallback_image(path, filename)
-    except:
-        return download_fallback_image(path, filename)
-
-def download_fallback_image(path, filename):
-    try:
-        url = random.choice(FALLBACK_IMAGES)
-        r = requests.get(url, timeout=10)
-        img = Image.open(BytesIO(r.content)).convert("RGB")
-        img = img.resize((1200, 675))
-        img.save(path, "WEBP")
+    
+    # Cek cache file
+    if os.path.exists(path) and os.path.getsize(path) > 5000:
         return f"/images/{filename}"
-    except:
-        return "/images/default-entertainment.jpg"
+
+    print(f"      🎨 Generating Discover Image for: {query[:20]}...")
+    clean_query = clean_prompt_for_ai(query)
+    headers = {'User-Agent': 'Mozilla/5.0'}
+
+    # ---------------------------------------------------------
+    # TIER 1: FLUX-REALISM (Target: Google Discover)
+    # ---------------------------------------------------------
+    try:
+        # Prompt khusus Realism
+        prompt_realism = f"editorial photography of {clean_query}, award winning photo, 8k, highly detailed, dramatic lighting, depth of field, f/1.8, bokeh, no text"
+        safe_prompt = requests.utils.quote(prompt_realism)
+        
+        # Timeout kita naikkan jadi 45 detik demi kualitas
+        url_realism = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux-realism&seed={random.randint(1,10000)}"
+        
+        resp = requests.get(url_realism, headers=headers, timeout=45)
+        
+        if resp.status_code == 200 and len(resp.content) > 20000:
+            if save_and_optimize_image(resp.content, path):
+                print("         ✅ Tier 1: Flux-Realism Success")
+                return f"/images/{filename}"
+        
+        print("         ⚠️ Tier 1 Failed/Timeout. Switching to Tier 2...")
+    except Exception as e:
+        print(f"         ⚠️ Tier 1 Error: {e}")
+
+    # ---------------------------------------------------------
+    # TIER 2: FLUX STANDARD + "FAKE REALISM" PROMPT
+    # (Jauh lebih stabil, tapi kita paksa jadi realistis via prompt)
+    # ---------------------------------------------------------
+    try:
+        # Prompt kita perkeras agar Flux biasa terlihat seperti Realism
+        prompt_fake_realism = f"hyperrealistic photo of {clean_query}, 4k resolution, cinematic focus, sharp details, professional photography, vivid colors"
+        safe_prompt_2 = requests.utils.quote(prompt_fake_realism)
+        
+        url_flux = f"https://image.pollinations.ai/prompt/{safe_prompt_2}?width=1280&height=720&nologo=true&model=flux&seed={random.randint(1,10000)}"
+        
+        resp = requests.get(url_flux, headers=headers, timeout=30)
+        
+        if resp.status_code == 200 and len(resp.content) > 20000:
+            if save_and_optimize_image(resp.content, path):
+                print("         ✅ Tier 2: Flux (Enhanced) Success")
+                return f"/images/{filename}"
+            
+    except Exception as e:
+        print(f"         ⚠️ Tier 2 Error: {e}")
+
+    # ---------------------------------------------------------
+    # TIER 3: SMART CATEGORY STOCK (Anti-Gagal)
+    # ---------------------------------------------------------
+    print(f"      ❌ AI Gen Failed. Using Fallback for: {category}")
+    return download_category_fallback(category, path, filename)
+
+def download_category_fallback(category, path, filename):
+    fallback_url = CATEGORY_FALLBACKS.get(category, CATEGORY_FALLBACKS["General"])
+    try:
+        r = requests.get(fallback_url, timeout=15)
+        if r.status_code == 200:
+            img = Image.open(BytesIO(r.content)).convert("RGB")
+            img = img.resize((1200, 675), Image.Resampling.LANCZOS)
+            img.save(path, "WEBP", quality=85)
+            return f"/images/{filename}"
+    except: pass
+    return "/images/default-glitz.jpg"
 
 # --- 🟢 INDEXING ---
 def submit_to_google(url):
@@ -235,7 +264,6 @@ def submit_to_indexnow(url):
 
 # --- 🟢 CONTENT FORMATTER ---
 def format_content_structure(text):
-    # Panggil fungsi perbaikan Markdown TERLEBIH DAHULU
     text = repair_markdown_formatting(text)
     
     parts = text.split("\n\n")
@@ -280,7 +308,6 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
     api_key = random.choice(GROQ_API_KEYS)
     client = Groq(api_key=api_key)
     
-    # 🔴 PERBAIKAN PROMPT: Instruksi Tegas untuk Formatting
     prompt = f"""
     You are {author}. Write a 1000-word article on: "{metadata['title']}"
     Context: {summary}
@@ -304,7 +331,6 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
 
     Output MARKDOWN only.
     """
-    
     try:
         chat = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
@@ -317,7 +343,7 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
 
 # --- MAIN LOOP ---
 def main():
-    print("🎬 Starting glitz Daily Automation (Markdown Fix Active)...")
+    print("🎬 Starting glitz Daily Automation (Ultimate Edition)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     
@@ -328,8 +354,7 @@ def main():
         
         success_count = 0
         for entry in feed.entries:
-            if success_count >= TARGET_PER_SOURCE: 
-                break
+            if success_count >= TARGET_PER_SOURCE: break
             
             clean_title = clean_camel_case(entry.title.split(" - ")[0])
             print(f"   ✨ Analyzing: {clean_title[:30]}...")
@@ -357,10 +382,13 @@ def main():
             raw_content = write_article(meta, entry.summary, links, author, external_str)
             if not raw_content: continue
             
-            # 🟢 STEP PENTING: FORMATTING
             final_content = format_content_structure(raw_content)
             
-            img_path = download_image_safe(meta['title'], slug)
+            # 🟢 SMART IMAGE GENERATION (Tiered Strategy)
+            # Prioritas keyword untuk gambar: Main Keyword -> Title
+            image_query = meta.get('keywords', [meta['title']])[0] 
+            img_path = download_image_safe(image_query, meta['category'], slug)
+            
             date_now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00")
             tags_json = json.dumps(meta['keywords'])
             
