@@ -439,7 +439,7 @@ url: "/{slug}/"
             print(f"      ✅ Published: {filename}")
             success_count += 1
             print("      ⏳ Cooling down request for 10s...")
-            time.sleep(10) 
+            time.sleep(30) 
 
     print("\n🎉 DONE! Automation Finished.")
 
