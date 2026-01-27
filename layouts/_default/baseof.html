@@ -5,26 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <!-- 1. PRECONNECT & PRELOAD (CRITICAL PERFORMANCE) -->
+    <!-- =======================================================
+         1. PERFORMANCE & PRECONNECT (CRITICAL FOR LCP SCORE)
+         ======================================================= -->
+    <!-- Tailwind CDN -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://s10.histats.com">
-    <!-- Preload Tailwind Script agar tidak render blocking -->
-    <link rel="preload" href="https://cdn.tailwindcss.com?plugins=typography,line-clamp" as="script">
+    
+    <!-- ⚡ Image CDNs (Sesuai Script Python Anda) -->
+    <!-- Ini SANGAT PENTING agar gambar LCP muncul instan -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://image.pollinations.ai" crossorigin>
+    <link rel="dns-prefetch" href="https://image.pollinations.ai">
 
-    <!-- 2. SEO TITLE (Rapi tanpa Spasi Berlebih) -->
-    <title>{{ if .IsHome }}{{ .Site.Title }} - Breaking glitznology news, AI breakthroughs, Gadget reviews, and Cyber Security analysis{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <!-- =======================================================
+         2. SEO METADATA
+         ======================================================= -->
+    <title>{{ if .IsHome }}{{ .Site.Title }} - Pop Culture, Movies, Gaming & Entertainment News{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
-    <!-- 3. META DESCRIPTION (SAFE MODE) -->
-    <!-- 'plainify' membuang tag HTML, 'htmlUnescape' membersihkan karakter aneh -->
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.description | default .Summary | plainify | htmlUnescape }}{{ end }}">
-
     <link rel="canonical" href="{{ .Permalink }}">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="theme-color" content="#111827">
+    <meta name="theme-color" content="#ffffff">
 
-    <!-- 4. TAILWIND & FONTS -->
+    <!-- =======================================================
+         3. STYLING (TAILWIND & FONTS)
+         ======================================================= -->
     <script src="https://cdn.tailwindcss.com?plugins=typography,line-clamp"></script>
     <script>
         tailwind.config = {
@@ -33,19 +43,32 @@
                     fontFamily: {
                         sans: ['Roboto', 'sans-serif'],
                         display: ['Libre Franklin', 'sans-serif'],
+                    },
+                    colors: {
+                        'news-red': '#DC2626',
+                        'news-dark': '#111827',
                     }
                 }
             }
         }
     </script>
+    
+    <!-- Non-Blocking Font Loading Strategy -->
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
+    
+    <style>
+        /* Mencegah Text Invisible saat loading font (Penting untuk PageSpeed) */
+        body { font-display: swap; }
+    </style>
 
-    <!-- 5. OPEN GRAPH (FB/WA) -->
-    <meta property="og:locale" content="{{ .Site.LanguageCode | default "en_GB" }}">
+    <!-- =======================================================
+         4. SOCIAL MEDIA (OPEN GRAPH & TWITTER)
+         ======================================================= -->
+    <meta property="og:locale" content="{{ .Site.LanguageCode | default "en_US" }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }} - Football News & Analysis{{ else }}{{ .Title }}{{ end }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }} - Entertainment & Pop Culture{{ else }}{{ .Title }}{{ end }}">
     <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.description | default .Summary | plainify | htmlUnescape }}{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
     
@@ -54,21 +77,21 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="675">
     {{ else }}
-    <meta property="og:image" content="{{ "images/default-football.jpg" | absURL }}">
+    <!-- Ganti default image agar tidak "football" -->
+    <meta property="og:image" content="{{ "images/default-glitz.jpg" | absURL }}">
     {{ end }}
 
-    <!-- 6. TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.description | default .Summary | plainify | htmlUnescape }}{{ end }}">
     {{ if .Params.featured_image }}
     <meta name="twitter:image" content="{{ .Params.featured_image | absURL }}">
     {{ else }}
-    <meta name="twitter:image" content="{{ "images/default-football.jpg" | absURL }}">
+    <meta name="twitter:image" content="{{ "images/default-glitz.jpg" | absURL }}">
     {{ end }}
 
     <!-- =======================================================
-         7. SCHEMA.ORG (JSON-LD)
+         5. SCHEMA.ORG (JSON-LD) - DYNAMIC
          ======================================================= -->
     
     <!-- A. Homepage Schema -->
@@ -77,13 +100,13 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "tech Daily",
-      "alternateName": ["techDaily", "tech Daily News"],
+      "name": "{{ .Site.Title }}",
+      "alternateName": ["{{ .Site.Title }} News", "Pop Culture Daily"],
       "url": "{{ .Site.BaseURL }}",
       "description": "{{ .Site.Params.description }}",
       "publisher": {
         "@type": "Organization",
-        "name": "tech Daily",
+        "name": "{{ .Site.Title }}",
         "logo": {
           "@type": "ImageObject",
           "url": "{{ "favicon.svg" | absURL }}"
@@ -109,7 +132,7 @@
       "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
       "author": {
         "@type": "Person",
-        "name": "{{ .Params.author | default "tech Daily Team" }}"
+        "name": "{{ .Params.author | default "Editorial Team" }}"
       },
       "publisher": {
         "@type": "Organization",
@@ -128,12 +151,16 @@
     
 </head>
 <body class="bg-white text-news-dark font-sans antialiased flex flex-col min-h-screen">
+    
     {{ partial "header.html" . }}
+    
     {{ partial "ads/billboard.html" . }}
+    
     <main id="main-content" role="main" class="flex-grow">
         {{ block "main" . }}{{ end }}
     </main>
+    
     {{ partial "footer.html" . }}
-</body> 
 
+</body> 
 </html>
