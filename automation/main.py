@@ -61,7 +61,7 @@ RSS_SOURCES = {
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
 }
 
-# 🟢 AUTHORITY SOURCES WITH URLS (Untuk External Linking)
+# 🟢 AUTHORITY SOURCES MAP
 AUTHORITY_MAP = {
     "Variety": "https://variety.com",
     "The Hollywood Reporter": "https://www.hollywoodreporter.com",
@@ -162,7 +162,7 @@ def repair_markdown_formatting(text):
     text = re.sub(r'\|\s*\|', '|\n|', text)
     
     # Fix Lists (Mencegah bertumpuk)
-    text = re.sub(r'(?<!\n)\s-\s\[', '\n\n- [', text) # Double newline sebelum list item
+    text = re.sub(r'(?<!\n)\s-\s\[', '\n\n- [', text) 
     text = re.sub(r'(?<!\n)\s-\s\*\*', '\n\n- **', text)
     
     # Fix Headers
@@ -179,20 +179,16 @@ def get_internal_links():
     if not items: return ""
     count = min(len(items), 3)
     items = random.sample(items, count)
-    # Gunakan newline di string ini agar AI menyalinnya dengan benar
+    # Memastikan format bullet point benar
     return "\n".join([f"- [{title}]({url})" for title, url in items])
 
 def get_external_sources_formatted():
-    # Ambil 2 sumber random dari Authority Map
     keys = list(AUTHORITY_MAP.keys())
     selected_keys = random.sample(keys, 2)
-    
-    # Format string untuk instruksi AI: "Name (URL)"
     formatted_list = []
     for key in selected_keys:
         url = AUTHORITY_MAP[key]
         formatted_list.append(f"{key} ({url})")
-    
     return ", ".join(formatted_list)
 
 # --- 🟢 IMAGE ENGINE ---
@@ -201,7 +197,7 @@ def get_unique_stock_image(category):
     random.shuffle(target_list)
     for url in target_list:
         if not is_image_used(url): return url
-    return random.choice(target_list) # Fallback
+    return random.choice(target_list)
 
 def download_image(url, path):
     try:
@@ -306,46 +302,29 @@ def get_metadata(title, summary):
     return repair_json(response) if response else None
 
 def write_article(metadata, summary, internal_links, author, external_sources_str):
+    # Prompt persis sesuai permintaan Anda
     prompt = f"""
-    You are {author}. Write a 1000-word article.
-    Topic: {metadata['title']}
-    Context: {summary}
-    
-    KEY REQUIREMENTS:
-    
-    1. **Structure**: 
-       - Introduction (Hook)
-       - H2 Header for details
-       - H2 Header named "Must Read"
-       - H2 Header named "Industry Insight"
-       - Conclusion
-       - FAQ
-    
-    2. **External Linking (MANDATORY)**:
-       In the text or "Industry Insight" section, you MUST cite and HYPERLINK 2 sources from this list: 
-       [{external_sources_str}]
-       
-       Example format: "According to [Variety](https://variety.com), the situation is..."
-       DO NOT just write the text. MAKE IT A CLICKABLE MARKDOWN LINK.
+    You are {author}, an expert journalist. Write a 800-1000 word article based on:
+    Title: {metadata['title']}
+    Summary: {summary}
 
-    3. **Must Read Section**:
-       Create a section titled exactly "## Must Read".
-       Inside it, place EXACTLY this list (ensure new lines between items):
-       
-       {internal_links}
+    STRUCTURE & RULES:
+    1. **Formatting**: Use clean Markdown. 
+    2. **Headings**: Use H2 (##) for main sections.
+    3. **Table**: Include ONE Markdown table summarizing key facts/dates. Ensure blank lines before/after.
+    4. **Internal Links**: Include this list exactly in a section called "More News":
+    {internal_links}
+    5. **External Sources**: Mention {external_sources_str} naturally in the text.
+    6. **Style**: engaging, professional, analytical.
+    7. **FAQ**: Add 3 Q&A pairs at the end.
 
-    4. **Formatting**:
-       - Use Markdown.
-       - Include ONE data table.
-       - Keep paragraphs short.
-
-    Output MARKDOWN ONLY.
+    Do NOT output the title again at the start. Just start with the introduction.
     """
     return call_groq_api([{"role": "user", "content": prompt}])
 
 # --- MAIN LOOP ---
 def main():
-    logging.info("🎬 Starting Glitz Daily Automation (Final Fix)...")
+    logging.info("🎬 Starting Glitz Daily Automation (Final Structure)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -377,7 +356,7 @@ def main():
             # PREPARE CONTENT
             author = random.choice(AUTHOR_PROFILES)
             int_links = get_internal_links()
-            ext_sources_str = get_external_sources_formatted() # Generates "Source (URL), Source (URL)"
+            ext_sources_str = get_external_sources_formatted()
             
             content_body = write_article(meta, entry.summary, int_links, author, ext_sources_str)
             if not content_body: continue
@@ -422,7 +401,7 @@ url: "/{slug}/"
             
             logging.info(f"      ✅ Published: {slug}")
             processed_count += 1
-            time.sleep(25) 
+            time.sleep(15) 
 
     logging.info("🎉 Automation Finished.")
 
