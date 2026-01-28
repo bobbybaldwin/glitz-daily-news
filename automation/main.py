@@ -27,7 +27,6 @@ logging.basicConfig(
 warnings.filterwarnings("ignore", category=FutureWarning, module="google.api_core")
 
 # --- 🟢 CONFIGURATION ---
-# Load API Keys
 GROQ_KEYS_RAW = os.environ.get("GROQ_API_KEY", "")
 GROQ_API_KEYS = [k.strip() for k in GROQ_KEYS_RAW.split(",") if k.strip()]
 GOOGLE_JSON_KEY = os.environ.get("GOOGLE_INDEXING_KEY", "") 
@@ -62,36 +61,43 @@ RSS_SOURCES = {
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
 }
 
-AUTHORITY_SOURCES = [
-    "Variety", "The Hollywood Reporter", "Rolling Stone", "Billboard",
-    "Deadline", "IGN", "Rotten Tomatoes", "Pitchfork", "Vulture",
-    "Entertainment Weekly", "Polygon", "Kotaku", "ScreenRant"
-]
+# 🟢 AUTHORITY SOURCES WITH URLS (Untuk External Linking)
+AUTHORITY_MAP = {
+    "Variety": "https://variety.com",
+    "The Hollywood Reporter": "https://www.hollywoodreporter.com",
+    "Rolling Stone": "https://www.rollingstone.com",
+    "Billboard": "https://www.billboard.com",
+    "Deadline": "https://deadline.com",
+    "IGN": "https://www.ign.com",
+    "Rotten Tomatoes": "https://www.rottentomatoes.com",
+    "Pitchfork": "https://pitchfork.com",
+    "Vulture": "https://www.vulture.com",
+    "Entertainment Weekly": "https://ew.com",
+    "Polygon": "https://www.polygon.com",
+    "Kotaku": "https://kotaku.com",
+    "ScreenRant": "https://screenrant.com"
+}
 
-# Database Gambar Cadangan
+# Database Gambar
 RAW_IMAGE_DB = {
     "Movies & Film": [
         "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=90", 
         "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=90",
         "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=90",
-        "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=90",
-        "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&q=90"
+        "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=90"
     ],
     "TV Shows & Streaming": [
         "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=90",
         "https://images.unsplash.com/photo-1522869635100-1f4906a1f07d?w=1200&q=90", 
-        "https://images.unsplash.com/photo-1593784697956-14f46924c560?w=1200&q=90",
-        "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=1200&q=90"
+        "https://images.unsplash.com/photo-1593784697956-14f46924c560?w=1200&q=90"
     ],
     "Gaming & Esports": [
         "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=90",
-        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&q=90",
-        "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1200&q=90"
+        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&q=90"
     ],
     "General": [
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90",
-        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=90",
-        "https://images.unsplash.com/photo-1516280440614-6697288d5d38?w=1200&q=90"
+        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=90"
     ]
 }
 
@@ -118,7 +124,6 @@ def save_json_file(filepath, data):
 def save_link_to_memory(title, slug):
     memory = load_json_file(MEMORY_FILE)
     memory[title] = f"/{slug}/"
-    # Keep last 100 links
     if len(memory) > 100:
         memory = dict(list(memory.items())[-100:])
     save_json_file(MEMORY_FILE, memory)
@@ -142,12 +147,10 @@ def clean_camel_case(text):
 
 def repair_json(json_str):
     try:
-        # Hapus markdown code block jika ada
         json_str = re.sub(r'```json\s*', '', json_str)
         json_str = re.sub(r'\s*```', '', json_str)
         return json.loads(json_str) 
     except:
-        # Coba perbaikan manual sederhana
         json_str = re.sub(r'(\w+):', r'"\1":', json_str) 
         try: return json.loads(json_str)
         except: return None
@@ -157,12 +160,17 @@ def repair_markdown_formatting(text):
     # Fix Tables
     text = text.replace("| — |", "|---|").replace("|—|", "|---|")
     text = re.sub(r'\|\s*\|', '|\n|', text)
-    # Fix Lists
-    text = re.sub(r'(?<!\n)\s-\s\[', '\n- [', text) 
-    text = re.sub(r'(?<!\n)\s-\s\*\*', '\n- **', text)
+    
+    # Fix Lists (Mencegah bertumpuk)
+    text = re.sub(r'(?<!\n)\s-\s\[', '\n\n- [', text) # Double newline sebelum list item
+    text = re.sub(r'(?<!\n)\s-\s\*\*', '\n\n- **', text)
+    
     # Fix Headers
     text = re.sub(r'(?<!\n)###', "\n\n###", text)
     text = re.sub(r'(?<!\n)##', "\n\n##", text)
+    
+    # Clean multiple newlines
+    text = re.sub(r'\n{3,}', '\n\n', text)
     return text
 
 def get_internal_links():
@@ -171,26 +179,29 @@ def get_internal_links():
     if not items: return ""
     count = min(len(items), 3)
     items = random.sample(items, count)
+    # Gunakan newline di string ini agar AI menyalinnya dengan benar
     return "\n".join([f"- [{title}]({url})" for title, url in items])
+
+def get_external_sources_formatted():
+    # Ambil 2 sumber random dari Authority Map
+    keys = list(AUTHORITY_MAP.keys())
+    selected_keys = random.sample(keys, 2)
+    
+    # Format string untuk instruksi AI: "Name (URL)"
+    formatted_list = []
+    for key in selected_keys:
+        url = AUTHORITY_MAP[key]
+        formatted_list.append(f"{key} ({url})")
+    
+    return ", ".join(formatted_list)
 
 # --- 🟢 IMAGE ENGINE ---
 def get_unique_stock_image(category):
     target_list = RAW_IMAGE_DB.get(category, RAW_IMAGE_DB["General"])
-    
-    # Coba cari gambar yang belum pernah dipakai
     random.shuffle(target_list)
     for url in target_list:
-        if not is_image_used(url):
-            return url
-            
-    # Jika semua habis, ambil random dari General yang belum dipakai
-    general_list = RAW_IMAGE_DB["General"]
-    for url in general_list:
-        if not is_image_used(url):
-            return url
-            
-    # Fallback terakhir (kemungkinan duplikat)
-    return random.choice(target_list)
+        if not is_image_used(url): return url
+    return random.choice(target_list) # Fallback
 
 def download_image(url, path):
     try:
@@ -210,7 +221,6 @@ def generate_ai_image(prompt, path):
     clean_prompt = re.sub(r'[^a-zA-Z0-9\s]', '', prompt)[:100]
     safe_prompt = requests.utils.quote(f"cinematic photo of {clean_prompt}, 4k, realistic")
     url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux-realism"
-    
     return download_image(url, path)
 
 def process_image(query, category, slug):
@@ -218,17 +228,13 @@ def process_image(query, category, slug):
     filepath = os.path.join(IMAGE_DIR, filename)
     public_path = f"/images/{filename}"
     
-    if os.path.exists(filepath):
-        return public_path
+    if os.path.exists(filepath): return public_path
 
     logging.info(f"🎨 Processing Image: {query[:30]}...")
-    
-    # 1. Coba AI dulu
     if generate_ai_image(query, filepath):
         logging.info("   ✅ AI Image Generated")
         return public_path
         
-    # 2. Fallback ke Stock
     logging.info("   ⚠️ AI Failed, using Stock")
     stock_url = get_unique_stock_image(category)
     if download_image(stock_url, filepath):
@@ -256,7 +262,6 @@ def submit_to_indexnow(url):
 def submit_to_google(url):
     if not GOOGLE_JSON_KEY: return
     try:
-        # Import local disini agar tidak crash di awal jika library tidak ada
         from oauth2client.service_account import ServiceAccountCredentials
         from googleapiclient.discovery import build
         
@@ -276,15 +281,8 @@ def call_groq_api(messages, model="llama-3.3-70b-versatile", response_format=Non
         try:
             api_key = random.choice(GROQ_API_KEYS)
             client = Groq(api_key=api_key)
-            
-            kwargs = {
-                "model": model,
-                "messages": messages,
-                "temperature": 0.7
-            }
-            if response_format:
-                kwargs["response_format"] = response_format
-
+            kwargs = {"model": model, "messages": messages, "temperature": 0.7}
+            if response_format: kwargs["response_format"] = response_format
             chat = client.chat.completions.create(**kwargs)
             return chat.choices[0].message.content
         except Exception as e:
@@ -295,42 +293,59 @@ def call_groq_api(messages, model="llama-3.3-70b-versatile", response_format=Non
 def get_metadata(title, summary):
     categories_str = ", ".join(VALID_CATEGORIES)
     prompt = f"""
-    Analyze this news: "{title} - {summary[:200]}"
-    Task: Create SEO Metadata.
+    Analyze: "{title} - {summary[:200]}"
     Return JSON ONLY:
     {{
-        "title": "Catchy Title (No Clickbait, No CamelCase)",
-        "category": "Pick one from: [{categories_str}]",
-        "description": "Engaging 160 char summary",
-        "keywords": ["tag1", "tag2", "tag3"]
+        "title": "Catchy Title (No CamelCase)",
+        "category": "One of [{categories_str}]",
+        "description": "SEO description 160 chars",
+        "keywords": ["tag1", "tag2"]
     }}
     """
     response = call_groq_api([{"role": "user", "content": prompt}], response_format={"type": "json_object"})
     return repair_json(response) if response else None
 
-def write_article(metadata, summary, internal_links, author, external_sources):
+def write_article(metadata, summary, internal_links, author, external_sources_str):
     prompt = f"""
-    You are {author}, an expert journalist. Write a 800-1000 word article based on:
-    Title: {metadata['title']}
-    Summary: {summary}
+    You are {author}. Write a 1000-word article.
+    Topic: {metadata['title']}
+    Context: {summary}
     
-    STRUCTURE & RULES:
-    1. **Formatting**: Use clean Markdown. 
-    2. **Headings**: Use H2 (##) for main sections.
-    3. **Table**: Include ONE Markdown table summarizing key facts/dates. Ensure blank lines before/after.
-    4. **Internal Links**: Include this list exactly in a section called "More News":
-    {internal_links}
-    5. **External Sources**: Mention {external_sources} naturally in the text.
-    6. **Style**: engaging, professional, analytical.
-    7. **FAQ**: Add 3 Q&A pairs at the end.
+    KEY REQUIREMENTS:
+    
+    1. **Structure**: 
+       - Introduction (Hook)
+       - H2 Header for details
+       - H2 Header named "Must Read"
+       - H2 Header named "Industry Insight"
+       - Conclusion
+       - FAQ
+    
+    2. **External Linking (MANDATORY)**:
+       In the text or "Industry Insight" section, you MUST cite and HYPERLINK 2 sources from this list: 
+       [{external_sources_str}]
+       
+       Example format: "According to [Variety](https://variety.com), the situation is..."
+       DO NOT just write the text. MAKE IT A CLICKABLE MARKDOWN LINK.
 
-    Do NOT output the title again at the start. Just start with the introduction.
+    3. **Must Read Section**:
+       Create a section titled exactly "## Must Read".
+       Inside it, place EXACTLY this list (ensure new lines between items):
+       
+       {internal_links}
+
+    4. **Formatting**:
+       - Use Markdown.
+       - Include ONE data table.
+       - Keep paragraphs short.
+
+    Output MARKDOWN ONLY.
     """
     return call_groq_api([{"role": "user", "content": prompt}])
 
 # --- MAIN LOOP ---
 def main():
-    logging.info("🎬 Starting Glitz Daily Automation (Enhanced Version)...")
+    logging.info("🎬 Starting Glitz Daily Automation (Final Fix)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -339,9 +354,7 @@ def main():
         logging.info(f"\n📡 Scanning: {source_name}...")
         try:
             feed = feedparser.parse(url)
-        except Exception as e:
-            logging.error(f"Feed error {url}: {e}")
-            continue
+        except Exception as e: continue
 
         processed_count = 0
         for entry in feed.entries:
@@ -350,13 +363,10 @@ def main():
             clean_title = clean_camel_case(entry.title.split(" - ")[0])
             logging.info(f"   ✨ Analyzing: {clean_title[:40]}...")
 
-            # 1. Get Metadata
             meta = get_metadata(clean_title, entry.summary)
             if not meta: continue
             
-            if meta['category'] not in VALID_CATEGORIES:
-                meta['category'] = "Pop Culture Trends"
-            
+            if meta['category'] not in VALID_CATEGORIES: meta['category'] = "Pop Culture Trends"
             slug = slugify(meta['title'])
             filepath = os.path.join(CONTENT_DIR, f"{slug}.md")
             
@@ -364,21 +374,18 @@ def main():
                 logging.info(f"      ⏭️  Skipped (Exists)")
                 continue
 
-            # 2. Generate Content
+            # PREPARE CONTENT
             author = random.choice(AUTHOR_PROFILES)
             int_links = get_internal_links()
-            ext_sources = ", ".join(random.sample(AUTHORITY_SOURCES, 2))
+            ext_sources_str = get_external_sources_formatted() # Generates "Source (URL), Source (URL)"
             
-            content_body = write_article(meta, entry.summary, int_links, author, ext_sources)
+            content_body = write_article(meta, entry.summary, int_links, author, ext_sources_str)
             if not content_body: continue
             
-            # 3. Process Image
             img_keyword = meta['keywords'][0] if meta['keywords'] else meta['title']
             img_path = process_image(img_keyword, meta['category'], slug)
             
-            # 4. Final formatting
             final_content = repair_markdown_formatting(content_body)
-            # Inject Ads randomly
             parts = final_content.split("\n\n")
             if len(parts) > 4: parts.insert(3, "\n{{< ad >}}\n")
             final_content = "\n\n".join(parts)
@@ -409,18 +416,15 @@ url: "/{slug}/"
             
             save_link_to_memory(meta['title'], slug)
             
-            # 5. Indexing
             full_url = f"{WEBSITE_URL}/{slug}/"
             submit_to_indexnow(full_url)
             submit_to_google(full_url)
             
             logging.info(f"      ✅ Published: {slug}")
             processed_count += 1
-            
-            # Cooling down
             time.sleep(25) 
 
-    logging.info("🎉 Automation Finished Successfully.")
+    logging.info("🎉 Automation Finished.")
 
 if __name__ == "__main__":
     main()
