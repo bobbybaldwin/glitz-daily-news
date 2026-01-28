@@ -61,7 +61,7 @@ RSS_SOURCES = {
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
 }
 
-# 🟢 AUTHORITY SOURCES MAP (Untuk External Linking)
+# 🟢 AUTHORITY SOURCES MAP (External Linking)
 AUTHORITY_MAP = {
     "Variety": "https://variety.com",
     "The Hollywood Reporter": "https://www.hollywoodreporter.com",
@@ -78,35 +78,59 @@ AUTHORITY_MAP = {
     "ScreenRant": "https://screenrant.com"
 }
 
-# 🟢 USER AGENT LIST (Untuk Anti-Block Image Generator)
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
-    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0"
-]
-
-# Database Gambar (Stock Backup)
+# 🟢 MASSIVE STOCK DATABASE (Unsplash HD) - Anti Error
+# Saya perbanyak agar variatif karena kita matikan AI Generator
 RAW_IMAGE_DB = {
     "Movies & Film": [
         "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=90", 
         "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=90",
         "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=1200&q=90",
-        "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=90"
+        "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=1200&q=90",
+        "https://images.unsplash.com/photo-1517604931442-71053e683597?w=1200&q=90",
+        "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&q=90",
+        "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=90",
+        "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=1200&q=90"
     ],
     "TV Shows & Streaming": [
         "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&q=90",
         "https://images.unsplash.com/photo-1522869635100-1f4906a1f07d?w=1200&q=90", 
-        "https://images.unsplash.com/photo-1593784697956-14f46924c560?w=1200&q=90"
+        "https://images.unsplash.com/photo-1593784697956-14f46924c560?w=1200&q=90",
+        "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=1200&q=90",
+        "https://images.unsplash.com/photo-1585776245991-cf89dd7fc171?w=1200&q=90",
+        "https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=1200&q=90",
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=90"
+    ],
+    "Music & Concerts": [
+        "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1200&q=90",
+        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=90",
+        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=90",
+        "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&q=90",
+        "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=1200&q=90",
+        "https://images.unsplash.com/photo-1459749411177-0473ef7161a8?w=1200&q=90"
     ],
     "Gaming & Esports": [
         "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=90",
-        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&q=90"
+        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&q=90",
+        "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1200&q=90",
+        "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=1200&q=90",
+        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=90",
+        "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=90",
+        "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=1200&q=90"
+    ],
+    "Celebrity & Lifestyle": [
+        "https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?w=1200&q=90",
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=90",
+        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1200&q=90",
+        "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=1200&q=90",
+        "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=1200&q=90",
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=90"
     ],
     "General": [
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90",
-        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=90"
+        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=90",
+        "https://images.unsplash.com/photo-1516280440614-6697288d5d38?w=1200&q=90",
+        "https://images.unsplash.com/photo-1550133730-695473e544be?w=1200&q=90",
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&q=90"
     ]
 }
 
@@ -166,19 +190,12 @@ def repair_json(json_str):
 
 def repair_markdown_formatting(text):
     if not text: return ""
-    # Fix Tables
     text = text.replace("| — |", "|---|").replace("|—|", "|---|")
     text = re.sub(r'\|\s*\|', '|\n|', text)
-    
-    # Fix Lists (Mencegah bertumpuk)
     text = re.sub(r'(?<!\n)\s-\s\[', '\n\n- [', text) 
     text = re.sub(r'(?<!\n)\s-\s\*\*', '\n\n- **', text)
-    
-    # Fix Headers
     text = re.sub(r'(?<!\n)###', "\n\n###", text)
     text = re.sub(r'(?<!\n)##', "\n\n##", text)
-    
-    # Clean multiple newlines
     text = re.sub(r'\n{3,}', '\n\n', text)
     return text
 
@@ -199,27 +216,25 @@ def get_external_sources_formatted():
         formatted_list.append(f"{key} ({url})")
     return ", ".join(formatted_list)
 
-# --- 🟢 IMAGE ENGINE (SOPHISTICATED) ---
+# --- 🟢 IMAGE ENGINE (PURE STOCK MODE) ---
 def get_unique_stock_image(category):
     target_list = RAW_IMAGE_DB.get(category, RAW_IMAGE_DB["General"])
+    # Fallback ke General jika kategori kosong
+    if not target_list: target_list = RAW_IMAGE_DB["General"]
+    
     random.shuffle(target_list)
     for url in target_list:
         if not is_image_used(url): return url
+        
+    # Jika semua sudah terpakai, ambil acak (terpaksa duplikat daripada error)
     return random.choice(target_list)
 
-def download_image(url, path, headers=None):
+def download_image(url, path):
     try:
-        if not headers:
-            headers = {"User-Agent": "Mozilla/5.0"} 
-            
+        # User Agent standar browser
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
         r = requests.get(url, headers=headers, timeout=25)
         
-        # 🟢 VALIDASI UKURAN: Cek File > 15KB
-        # Gambar error Pollinations biasanya < 10KB. Gambar HD > 50KB.
-        if len(r.content) < 15000: 
-            logging.warning("      ⚠️ Image too small (Possible Rate Limit/Error). Skipping.")
-            return False
-
         if r.status_code == 200:
             img = Image.open(BytesIO(r.content)).convert("RGB")
             img = img.resize((1200, 675), Image.Resampling.LANCZOS)
@@ -231,24 +246,6 @@ def download_image(url, path, headers=None):
         logging.error(f"Image download failed: {e}")
     return False
 
-def generate_ai_image(prompt, path):
-    clean_prompt = re.sub(r'[^a-zA-Z0-9\s]', '', prompt)[:100]
-    safe_prompt = requests.utils.quote(f"cinematic photo of {clean_prompt}, 4k, realistic")
-    
-    # 🟢 TRIK ANTI LIMIT: Random Seed & Rotate User Agent
-    seed = random.randint(1, 999999)
-    url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux-realism&seed={seed}"
-    
-    selected_ua = random.choice(USER_AGENTS)
-    headers = {
-        "User-Agent": selected_ua,
-        "Referer": "https://google.com",
-        "Accept-Language": "en-US,en;q=0.9"
-    }
-    
-    logging.info(f"      🤖 AI Request (Seed: {seed})")
-    return download_image(url, path, headers=headers)
-
 def process_image(query, category, slug):
     filename = f"{slug}.webp"
     filepath = os.path.join(IMAGE_DIR, filename)
@@ -256,20 +253,21 @@ def process_image(query, category, slug):
     
     if os.path.exists(filepath): return public_path
 
-    logging.info(f"🎨 Processing Image: {query[:30]}...")
-
-    # 1. Coba AI Image (dengan Anti-Limit)
-    if generate_ai_image(query, filepath):
-        logging.info("   ✅ AI Image Generated")
-        return public_path
-        
-    # 2. Jika AI Gagal (Rate Limit/Kecil), Switch ke Stock
-    logging.info("   ⚠️ AI Rate Limit/Fail. Using Unique Stock Photo.")
+    logging.info(f"🎨 Processing Image for: {slug}...")
+    
+    # 🔴 AI GENERATOR DISABLED
+    # Karena API Pollinations sedang migrasi/error, kita force pakai Stock Photo
+    # agar website tetap tampil profesional.
+    
+    logging.info("   📸 Fetching High-Quality Stock Image (Unsplash)...")
     stock_url = get_unique_stock_image(category)
+    
     if download_image(stock_url, filepath):
         mark_image_as_used(stock_url, slug)
+        logging.info("   ✅ Stock Image Applied")
         return public_path
         
+    # Fallback absolut
     return "/images/default-glitz.jpg"
 
 # --- 🟢 INDEXING API ---
@@ -344,7 +342,7 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
     1. **Formatting**: Use clean Markdown. 
     2. **Headings**: Use H2 (##) for main sections.
     3. **Table**: Include ONE Markdown table summarizing key facts/dates. Ensure blank lines before/after.
-    4. **Internal Links**: Include this list exactly in a section called "Read More":
+    4. **Internal Links**: Include this list exactly in a section called "More News":
     {internal_links}
     5. **External Sources**: Mention {external_sources_str} naturally in the text.
     6. **Style**: engaging, professional, analytical.
@@ -356,7 +354,7 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
 
 # --- MAIN LOOP ---
 def main():
-    logging.info("🎬 Starting Glitz Daily Automation (Master Version)...")
+    logging.info("🎬 Starting Glitz Daily Automation (SAFE MODE)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
