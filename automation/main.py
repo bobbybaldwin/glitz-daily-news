@@ -344,7 +344,7 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
     1. **Formatting**: Use clean Markdown. 
     2. **Headings**: Use H2 (##) for main sections.
     3. **Table**: Include ONE Markdown table summarizing key facts/dates. Ensure blank lines before/after.
-    4. **Internal Links**: Include this list exactly in a section called "More News":
+    4. **Internal Links**: Include this list exactly in a section called "Read More":
     {internal_links}
     5. **External Sources**: Mention {external_sources_str} naturally in the text.
     6. **Style**: engaging, professional, analytical.
