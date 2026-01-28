@@ -310,3 +310,90 @@
 2026-01-28 18:21:38,114 - INFO -    🚀 Google Indexing Submitted
 2026-01-28 18:21:38,115 - INFO -       ✅ Published: best-and-worst-of-pop-culture-2025
 2026-01-28 18:21:53,115 - INFO - 🎉 Automation Finished.
+2026-01-28 18:31:51,412 - INFO - 🎬 Starting Glitz Daily Automation (SAFE MODE)...
+2026-01-28 18:31:51,413 - INFO - 
+📡 Scanning: Entertainment US...
+2026-01-28 18:31:51,740 - INFO -    ✨ Analyzing: WONDER MAN's Audience Score Revealed Alo...
+2026-01-28 18:31:52,191 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:31:54,622 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:31:54,624 - INFO - 🎨 Processing Image for: wonder-man-costume-revealed...
+2026-01-28 18:31:54,624 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-28 18:31:55,621 - INFO -    🚀 IndexNow Submitted
+2026-01-28 18:31:55,968 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 18:31:55,969 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 18:31:55,995 - INFO - Refreshing access_token
+2026-01-28 18:31:56,360 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 18:31:56,360 - INFO -       ✅ Published: wonder-man-costume-revealed
+2026-01-28 18:32:11,360 - INFO -    ✨ Analyzing: Stephen Colbert confirms upcoming last e...
+2026-01-28 18:32:11,657 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:32:14,786 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:32:14,787 - INFO - 🎨 Processing Image for: stephen-colbert-announces-last-episode...
+2026-01-28 18:32:14,787 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-28 18:32:15,593 - INFO -    🚀 IndexNow Submitted
+2026-01-28 18:32:15,594 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 18:32:15,595 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 18:32:15,621 - INFO - Refreshing access_token
+2026-01-28 18:32:15,961 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 18:32:15,961 - INFO -       ✅ Published: stephen-colbert-announces-last-episode
+2026-01-28 18:32:30,961 - INFO - 
+📡 Scanning: Gaming News...
+2026-01-28 18:32:31,506 - INFO -    ✨ Analyzing: Two Works by TECH.C. Students Win Awards...
+2026-01-28 18:32:31,836 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:32:34,665 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:32:34,666 - INFO - 🎨 Processing Image for: esports-students-win-awards...
+2026-01-28 18:32:34,666 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-28 18:32:34,817 - INFO -    ✅ Stock Image Applied
+2026-01-28 18:32:35,233 - INFO -    🚀 IndexNow Submitted
+2026-01-28 18:32:35,234 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 18:32:35,235 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 18:32:35,261 - INFO - Refreshing access_token
+2026-01-28 18:32:35,522 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 18:32:35,522 - INFO -       ✅ Published: esports-students-win-awards
+2026-01-28 18:32:50,522 - INFO -    ✨ Analyzing: Play VS acquires Vanta Esports, expandin...
+2026-01-28 18:32:50,829 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:32:53,086 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:32:53,087 - INFO - 🎨 Processing Image for: gaming-network-expands...
+2026-01-28 18:32:53,087 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-28 18:32:53,230 - INFO -    ✅ Stock Image Applied
+2026-01-28 18:32:53,670 - INFO -    🚀 IndexNow Submitted
+2026-01-28 18:32:53,671 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 18:32:53,677 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 18:32:53,703 - INFO - Refreshing access_token
+2026-01-28 18:32:53,993 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 18:32:53,993 - INFO -       ✅ Published: gaming-network-expands
+2026-01-28 18:33:08,993 - INFO - 
+📡 Scanning: Pop Culture...
+2026-01-28 18:33:09,503 - INFO -    ✨ Analyzing: The 15 biggest pop culture moments of 20...
+2026-01-28 18:33:09,743 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:33:09,744 - INFO -       ⏭️  Skipped (Exists)
+2026-01-28 18:33:09,744 - INFO -    ✨ Analyzing: The Official 2026 Pop Culture Ins & Outs...
+2026-01-28 18:33:10,005 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:33:10,006 - INFO -       ⏭️  Skipped (Exists)
+2026-01-28 18:33:10,006 - INFO -    ✨ Analyzing: From uplifting to degrading, here are th...
+2026-01-28 18:33:10,420 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:33:10,421 - INFO -       ⏭️  Skipped (Exists)
+2026-01-28 18:33:10,421 - INFO -    ✨ Analyzing: The Best New Couple, the Worst Threesome...
+2026-01-28 18:33:10,726 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:33:13,839 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:33:13,840 - INFO - 🎨 Processing Image for: best-and-worst-of-pop-culture...
+2026-01-28 18:33:13,840 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-28 18:33:14,353 - INFO -    ✅ Stock Image Applied
+2026-01-28 18:33:14,939 - INFO -    🚀 IndexNow Submitted
+2026-01-28 18:33:14,940 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 18:33:14,941 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 18:33:14,967 - INFO - Refreshing access_token
+2026-01-28 18:33:15,210 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 18:33:15,210 - INFO -       ✅ Published: best-and-worst-of-pop-culture
+2026-01-28 18:33:30,210 - INFO -    ✨ Analyzing: The 25 Best TV Shows, Movies, and Pop Cu...
+2026-01-28 18:33:30,633 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:33:32,976 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 18:33:32,976 - INFO - 🎨 Processing Image for: best-of-2025-entertainment...
+2026-01-28 18:33:32,977 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-28 18:33:33,146 - INFO -    ✅ Stock Image Applied
+2026-01-28 18:33:33,564 - INFO -    🚀 IndexNow Submitted
+2026-01-28 18:33:33,565 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 18:33:33,566 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 18:33:33,592 - INFO - Refreshing access_token
+2026-01-28 18:33:33,869 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 18:33:33,869 - INFO -       ✅ Published: best-of-2025-entertainment
+2026-01-28 18:33:48,869 - INFO - 🎉 Automation Finished.
