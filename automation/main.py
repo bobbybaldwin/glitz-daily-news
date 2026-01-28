@@ -418,7 +418,7 @@ url: "/{slug}/"
             processed_count += 1
             
             # Cooling down
-            time.sleep(15) 
+            time.sleep(25) 
 
     logging.info("🎉 Automation Finished Successfully.")
 
