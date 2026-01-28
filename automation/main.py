@@ -61,7 +61,7 @@ RSS_SOURCES = {
     "Pop Culture": "https://news.google.com/rss/search?q=pop+culture+trends&hl=en-US&gl=US&ceid=US:en"
 }
 
-# 🟢 AUTHORITY SOURCES MAP
+# 🟢 AUTHORITY SOURCES MAP (Untuk External Linking)
 AUTHORITY_MAP = {
     "Variety": "https://variety.com",
     "The Hollywood Reporter": "https://www.hollywoodreporter.com",
@@ -78,7 +78,16 @@ AUTHORITY_MAP = {
     "ScreenRant": "https://screenrant.com"
 }
 
-# Database Gambar
+# 🟢 USER AGENT LIST (Untuk Anti-Block Image Generator)
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0"
+]
+
+# Database Gambar (Stock Backup)
 RAW_IMAGE_DB = {
     "Movies & Film": [
         "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=90", 
@@ -179,7 +188,6 @@ def get_internal_links():
     if not items: return ""
     count = min(len(items), 3)
     items = random.sample(items, count)
-    # Memastikan format bullet point benar
     return "\n".join([f"- [{title}]({url})" for title, url in items])
 
 def get_external_sources_formatted():
@@ -191,7 +199,7 @@ def get_external_sources_formatted():
         formatted_list.append(f"{key} ({url})")
     return ", ".join(formatted_list)
 
-# --- 🟢 IMAGE ENGINE ---
+# --- 🟢 IMAGE ENGINE (SOPHISTICATED) ---
 def get_unique_stock_image(category):
     target_list = RAW_IMAGE_DB.get(category, RAW_IMAGE_DB["General"])
     random.shuffle(target_list)
@@ -199,9 +207,19 @@ def get_unique_stock_image(category):
         if not is_image_used(url): return url
     return random.choice(target_list)
 
-def download_image(url, path):
+def download_image(url, path, headers=None):
     try:
-        r = requests.get(url, timeout=20)
+        if not headers:
+            headers = {"User-Agent": "Mozilla/5.0"} 
+            
+        r = requests.get(url, headers=headers, timeout=25)
+        
+        # 🟢 VALIDASI UKURAN: Cek File > 15KB
+        # Gambar error Pollinations biasanya < 10KB. Gambar HD > 50KB.
+        if len(r.content) < 15000: 
+            logging.warning("      ⚠️ Image too small (Possible Rate Limit/Error). Skipping.")
+            return False
+
         if r.status_code == 200:
             img = Image.open(BytesIO(r.content)).convert("RGB")
             img = img.resize((1200, 675), Image.Resampling.LANCZOS)
@@ -216,8 +234,20 @@ def download_image(url, path):
 def generate_ai_image(prompt, path):
     clean_prompt = re.sub(r'[^a-zA-Z0-9\s]', '', prompt)[:100]
     safe_prompt = requests.utils.quote(f"cinematic photo of {clean_prompt}, 4k, realistic")
-    url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux-realism"
-    return download_image(url, path)
+    
+    # 🟢 TRIK ANTI LIMIT: Random Seed & Rotate User Agent
+    seed = random.randint(1, 999999)
+    url = f"https://image.pollinations.ai/prompt/{safe_prompt}?width=1280&height=720&nologo=true&model=flux-realism&seed={seed}"
+    
+    selected_ua = random.choice(USER_AGENTS)
+    headers = {
+        "User-Agent": selected_ua,
+        "Referer": "https://google.com",
+        "Accept-Language": "en-US,en;q=0.9"
+    }
+    
+    logging.info(f"      🤖 AI Request (Seed: {seed})")
+    return download_image(url, path, headers=headers)
 
 def process_image(query, category, slug):
     filename = f"{slug}.webp"
@@ -227,11 +257,14 @@ def process_image(query, category, slug):
     if os.path.exists(filepath): return public_path
 
     logging.info(f"🎨 Processing Image: {query[:30]}...")
+
+    # 1. Coba AI Image (dengan Anti-Limit)
     if generate_ai_image(query, filepath):
         logging.info("   ✅ AI Image Generated")
         return public_path
         
-    logging.info("   ⚠️ AI Failed, using Stock")
+    # 2. Jika AI Gagal (Rate Limit/Kecil), Switch ke Stock
+    logging.info("   ⚠️ AI Rate Limit/Fail. Using Unique Stock Photo.")
     stock_url = get_unique_stock_image(category)
     if download_image(stock_url, filepath):
         mark_image_as_used(stock_url, slug)
@@ -302,7 +335,6 @@ def get_metadata(title, summary):
     return repair_json(response) if response else None
 
 def write_article(metadata, summary, internal_links, author, external_sources_str):
-    # Prompt persis sesuai permintaan Anda
     prompt = f"""
     You are {author}, an expert journalist. Write a 800-1000 word article based on:
     Title: {metadata['title']}
@@ -324,7 +356,7 @@ def write_article(metadata, summary, internal_links, author, external_sources_st
 
 # --- MAIN LOOP ---
 def main():
-    logging.info("🎬 Starting Glitz Daily Automation (Final Structure)...")
+    logging.info("🎬 Starting Glitz Daily Automation (Master Version)...")
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
