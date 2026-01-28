@@ -73,3 +73,80 @@
 2026-01-28 14:16:06,489 - INFO -    🚀 Google Indexing Submitted
 2026-01-28 14:16:06,489 - INFO -       ✅ Published: pop-culture-trends-for-2026
 2026-01-28 14:16:21,489 - INFO - 🎉 Automation Finished Successfully.
+2026-01-28 14:31:36,088 - INFO - 🎬 Starting Glitz Daily Automation (Final Fix)...
+2026-01-28 14:31:36,089 - INFO - 
+📡 Scanning: Entertainment US...
+2026-01-28 14:31:36,470 - INFO -    ✨ Analyzing: 'Send Help' producer Zainab Azizi: 'I'm ...
+2026-01-28 14:31:37,019 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:31:39,354 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:31:39,356 - INFO - 🎨 Processing Image: Zainab Azizi...
+2026-01-28 14:31:42,698 - INFO -    ✅ AI Image Generated
+2026-01-28 14:31:43,274 - INFO -    🚀 IndexNow Submitted
+2026-01-28 14:31:43,694 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 14:31:43,695 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 14:31:43,721 - INFO - Refreshing access_token
+2026-01-28 14:31:44,023 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 14:31:44,024 - INFO -       ✅ Published: bollywood-fan-meets-hollywood
+2026-01-28 14:32:09,024 - INFO -    ✨ Analyzing: How to watch Marvel’s ‘Wonder Man’ show ...
+2026-01-28 14:32:09,512 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:32:11,362 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:32:11,363 - INFO - 🎨 Processing Image: Marvel...
+2026-01-28 14:32:31,495 - ERROR - Image download failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=20)
+2026-01-28 14:32:31,495 - INFO -    ⚠️ AI Failed, using Stock
+2026-01-28 14:32:32,355 - INFO -    🚀 IndexNow Submitted
+2026-01-28 14:32:32,357 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 14:32:32,358 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 14:32:32,384 - INFO - Refreshing access_token
+2026-01-28 14:32:32,665 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 14:32:32,665 - INFO -       ✅ Published: marvel-wonder-man-show-premiere
+2026-01-28 14:32:57,665 - INFO - 
+📡 Scanning: Gaming News...
+2026-01-28 14:32:58,272 - INFO -    ✨ Analyzing: Two Works by TECH.C. Students Win Awards...
+2026-01-28 14:32:58,631 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:00,283 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:00,284 - INFO - 🎨 Processing Image: esports...
+2026-01-28 14:33:01,277 - INFO -    ✅ AI Image Generated
+2026-01-28 14:33:01,736 - INFO -    🚀 IndexNow Submitted
+2026-01-28 14:33:01,738 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 14:33:01,738 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 14:33:01,764 - INFO - Refreshing access_token
+2026-01-28 14:33:02,025 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 14:33:02,025 - INFO -       ✅ Published: esports-students-win-awards
+2026-01-28 14:33:27,025 - INFO -    ✨ Analyzing: Play VS acquires Vanta Esports, expandin...
+2026-01-28 14:33:27,293 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:29,287 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:29,288 - INFO - 🎨 Processing Image: Vanta Esports...
+2026-01-28 14:33:49,365 - ERROR - Image download failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=20)
+2026-01-28 14:33:49,365 - INFO -    ⚠️ AI Failed, using Stock
+2026-01-28 14:33:50,099 - INFO -    🚀 IndexNow Submitted
+2026-01-28 14:33:50,101 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 14:33:50,102 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 14:33:50,127 - INFO - Refreshing access_token
+2026-01-28 14:33:50,400 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 14:33:50,400 - INFO -       ✅ Published: expanding-gaming-network
+2026-01-28 14:34:15,400 - INFO - 
+📡 Scanning: Pop Culture...
+2026-01-28 14:34:16,021 - INFO -    ✨ Analyzing: The 15 biggest pop culture moments of 20...
+2026-01-28 14:34:16,410 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:34:18,425 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:34:18,426 - INFO - 🎨 Processing Image: pop culture...
+2026-01-28 14:34:20,086 - INFO -    ✅ AI Image Generated
+2026-01-28 14:34:20,511 - INFO -    🚀 IndexNow Submitted
+2026-01-28 14:34:20,512 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 14:34:20,513 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 14:34:20,539 - INFO - Refreshing access_token
+2026-01-28 14:34:20,792 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 14:34:20,792 - INFO -       ✅ Published: big-pop-culture-moments
+2026-01-28 14:34:45,793 - INFO -    ✨ Analyzing: The Official 2026 Pop Culture Ins & Outs...
+2026-01-28 14:34:46,192 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:34:47,845 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:34:47,845 - INFO - 🎨 Processing Image: pop culture...
+2026-01-28 14:35:07,926 - ERROR - Image download failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=20)
+2026-01-28 14:35:07,926 - INFO -    ⚠️ AI Failed, using Stock
+2026-01-28 14:35:08,548 - INFO -    🚀 IndexNow Submitted
+2026-01-28 14:35:08,550 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-28 14:35:08,551 - INFO - Attempting refresh to obtain initial access_token
+2026-01-28 14:35:08,577 - INFO - Refreshing access_token
+2026-01-28 14:35:08,857 - INFO -    🚀 Google Indexing Submitted
+2026-01-28 14:35:08,857 - INFO -       ✅ Published: pop-culture-trends-for-2026
+2026-01-28 14:35:33,858 - INFO - 🎉 Automation Finished.
