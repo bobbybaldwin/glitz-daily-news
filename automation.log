@@ -683,3 +683,106 @@
 2026-01-29 12:48:03,053 - INFO -    🚀 Google Indexing Submitted
 2026-01-29 12:48:03,053 - INFO -       ✅ Published: pop-culture-year-in-review
 2026-01-29 12:48:18,054 - INFO - 🎉 Automation Finished.
+2026-01-29 18:37:33,197 - INFO - 🎬 Starting Glitz Daily Automation (SAFE MODE)...
+2026-01-29 18:37:33,197 - INFO - 
+📡 Scanning: Entertainment US...
+2026-01-29 18:37:33,522 - INFO -    ✨ Analyzing: Bruce Springsteen slams ‘King Trump’ and...
+2026-01-29 18:37:34,035 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:37:36,570 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:37:36,571 - INFO - 🎨 Processing Image for: bruce-springsteen-protests-king-trump...
+2026-01-29 18:37:36,571 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-29 18:37:37,300 - INFO -    ✅ Stock Image Applied
+2026-01-29 18:37:37,863 - INFO -    🚀 IndexNow Submitted
+2026-01-29 18:37:38,485 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-29 18:37:38,486 - INFO - Attempting refresh to obtain initial access_token
+2026-01-29 18:37:38,512 - INFO - Refreshing access_token
+2026-01-29 18:37:38,909 - INFO -    🚀 Google Indexing Submitted
+2026-01-29 18:37:38,909 - INFO -       ✅ Published: bruce-springsteen-protests-king-trump
+2026-01-29 18:37:53,909 - INFO -    ✨ Analyzing: Social media star Shirley Raines dies af...
+2026-01-29 18:37:54,314 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:37:57,120 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:37:57,121 - INFO - 🎨 Processing Image for: social-media-star-dies-helping-homeless...
+2026-01-29 18:37:57,121 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-29 18:37:57,341 - INFO -    ✅ Stock Image Applied
+2026-01-29 18:37:57,885 - INFO -    🚀 IndexNow Submitted
+2026-01-29 18:37:57,886 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-29 18:37:57,887 - INFO - Attempting refresh to obtain initial access_token
+2026-01-29 18:37:57,913 - INFO - Refreshing access_token
+2026-01-29 18:37:58,223 - INFO -    🚀 Google Indexing Submitted
+2026-01-29 18:37:58,224 - INFO -       ✅ Published: social-media-star-dies-helping-homeless
+2026-01-29 18:38:13,224 - INFO - 
+📡 Scanning: Gaming News...
+2026-01-29 18:38:13,983 - INFO -    ✨ Analyzing: Rowdy’s Esports Arena Takes Gaming to An...
+2026-01-29 18:38:14,328 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:14,329 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:14,329 - INFO -    ✨ Analyzing: Top Esports Games on Twitch 2025: CS 2, ...
+2026-01-29 18:38:14,697 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:17,249 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:17,250 - INFO - 🎨 Processing Image for: top-esports-games-on-twitch...
+2026-01-29 18:38:17,250 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-29 18:38:17,466 - INFO -    ✅ Stock Image Applied
+2026-01-29 18:38:18,016 - INFO -    🚀 IndexNow Submitted
+2026-01-29 18:38:18,018 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-29 18:38:18,019 - INFO - Attempting refresh to obtain initial access_token
+2026-01-29 18:38:18,044 - INFO - Refreshing access_token
+2026-01-29 18:38:18,380 - INFO -    🚀 Google Indexing Submitted
+2026-01-29 18:38:18,380 - INFO -       ✅ Published: top-esports-games-on-twitch
+2026-01-29 18:38:33,381 - INFO -    ✨ Analyzing: Esports Nations Cup Announces $20 Millio...
+2026-01-29 18:38:33,777 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:36,078 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:36,079 - INFO - 🎨 Processing Image for: esports-nations-cup-offers-big-prize...
+2026-01-29 18:38:36,079 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-29 18:38:36,264 - INFO -    ✅ Stock Image Applied
+2026-01-29 18:38:36,774 - INFO -    🚀 IndexNow Submitted
+2026-01-29 18:38:36,776 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-29 18:38:36,777 - INFO - Attempting refresh to obtain initial access_token
+2026-01-29 18:38:36,803 - INFO - Refreshing access_token
+2026-01-29 18:38:37,111 - INFO -    🚀 Google Indexing Submitted
+2026-01-29 18:38:37,111 - INFO -       ✅ Published: esports-nations-cup-offers-big-prize
+2026-01-29 18:38:52,111 - INFO - 
+📡 Scanning: Pop Culture...
+2026-01-29 18:38:52,919 - INFO -    ✨ Analyzing: The 15 biggest pop culture moments of 20...
+2026-01-29 18:38:53,313 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:53,314 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:53,314 - INFO -    ✨ Analyzing: The Official 2026 Pop Culture Ins & Outs...
+2026-01-29 18:38:53,648 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:53,649 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:53,649 - INFO -    ✨ Analyzing: The 25 Best TV Shows, Movies, and Pop Cu...
+2026-01-29 18:38:54,095 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:54,096 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:54,096 - INFO -    ✨ Analyzing: From uplifting to degrading, here are th...
+2026-01-29 18:38:54,416 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:54,417 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:54,417 - INFO -    ✨ Analyzing: The 13 Biggest Pop Culture Moments That ...
+2026-01-29 18:38:54,824 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:54,825 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:54,825 - INFO -    ✨ Analyzing: Top 100 Pop Culture Trends for 2026...
+2026-01-29 18:38:55,186 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:55,187 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:55,187 - INFO -    ✨ Analyzing: The Best New Couple, the Worst Threesome...
+2026-01-29 18:38:55,506 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:55,507 - INFO -       ⏭️  Skipped (Exists)
+2026-01-29 18:38:55,507 - INFO -    ✨ Analyzing: The Year in Scandals, Memes, and More Po...
+2026-01-29 18:38:55,920 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:58,764 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:38:58,765 - INFO - 🎨 Processing Image for: year-in-review-of-pop-culture...
+2026-01-29 18:38:58,765 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-29 18:38:59,779 - INFO -    🚀 IndexNow Submitted
+2026-01-29 18:38:59,780 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-29 18:38:59,781 - INFO - Attempting refresh to obtain initial access_token
+2026-01-29 18:38:59,807 - INFO - Refreshing access_token
+2026-01-29 18:39:00,122 - INFO -    🚀 Google Indexing Submitted
+2026-01-29 18:39:00,122 - INFO -       ✅ Published: year-in-review-of-pop-culture
+2026-01-29 18:39:15,122 - INFO -    ✨ Analyzing: Top trends from last Patriots-Broncos AF...
+2026-01-29 18:39:15,442 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:39:18,263 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-29 18:39:18,264 - INFO - 🎨 Processing Image for: patriots-broncos-afc-championship...
+2026-01-29 18:39:18,264 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-29 18:39:18,467 - INFO -    ✅ Stock Image Applied
+2026-01-29 18:39:18,967 - INFO -    🚀 IndexNow Submitted
+2026-01-29 18:39:18,969 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-29 18:39:18,969 - INFO - Attempting refresh to obtain initial access_token
+2026-01-29 18:39:18,995 - INFO - Refreshing access_token
+2026-01-29 18:39:19,313 - INFO -    🚀 Google Indexing Submitted
+2026-01-29 18:39:19,313 - INFO -       ✅ Published: patriots-broncos-afc-championship
+2026-01-29 18:39:34,314 - INFO - 🎉 Automation Finished.
