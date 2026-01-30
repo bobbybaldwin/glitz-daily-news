@@ -786,3 +786,94 @@
 2026-01-29 18:39:19,313 - INFO -    🚀 Google Indexing Submitted
 2026-01-29 18:39:19,313 - INFO -       ✅ Published: patriots-broncos-afc-championship
 2026-01-29 18:39:34,314 - INFO - 🎉 Automation Finished.
+2026-01-30 01:42:28,067 - INFO - 🎬 Starting Glitz Daily Automation (SAFE MODE)...
+2026-01-30 01:42:28,067 - INFO - 
+📡 Scanning: Entertainment US...
+2026-01-30 01:42:28,272 - INFO -    ✨ Analyzing: White House Calls Bruce Springsteen’s An...
+2026-01-30 01:42:28,637 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:42:31,007 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:42:31,008 - INFO - 🎨 Processing Image for: springsteen-song-criticized...
+2026-01-30 01:42:31,008 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 01:42:31,215 - INFO -    ✅ Stock Image Applied
+2026-01-30 01:42:32,310 - INFO -    🚀 IndexNow Submitted
+2026-01-30 01:42:32,753 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 01:42:32,754 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 01:42:32,780 - INFO - Refreshing access_token
+2026-01-30 01:42:33,084 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 01:42:33,085 - INFO -       ✅ Published: springsteen-song-criticized
+2026-01-30 01:42:48,085 - INFO -    ✨ Analyzing: Shirley Raines, Who Gave L.A.’s Homeless...
+2026-01-30 01:42:48,311 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:42:50,430 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:42:50,431 - INFO - 🎨 Processing Image for: shirley-raines-dies-at-58...
+2026-01-30 01:42:50,431 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 01:42:50,640 - INFO -    ✅ Stock Image Applied
+2026-01-30 01:42:51,138 - INFO -    🚀 IndexNow Submitted
+2026-01-30 01:42:51,140 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 01:42:51,141 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 01:42:51,167 - INFO - Refreshing access_token
+2026-01-30 01:42:51,354 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 01:42:51,354 - INFO -       ✅ Published: shirley-raines-dies-at-58
+2026-01-30 01:43:06,355 - INFO - 
+📡 Scanning: Gaming News...
+2026-01-30 01:43:06,994 - INFO -    ✨ Analyzing: Rowdy’s Esports Arena Takes Gaming to An...
+2026-01-30 01:43:07,373 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:07,374 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 01:43:07,374 - INFO -    ✨ Analyzing: Top Esports Games on Twitch 2025: CS 2, ...
+2026-01-30 01:43:07,667 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:10,382 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:10,383 - INFO - 🎨 Processing Image for: popular-esports-games-on-twitch...
+2026-01-30 01:43:10,383 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 01:43:10,552 - INFO -    ✅ Stock Image Applied
+2026-01-30 01:43:10,994 - INFO -    🚀 IndexNow Submitted
+2026-01-30 01:43:10,996 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 01:43:10,996 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 01:43:11,022 - INFO - Refreshing access_token
+2026-01-30 01:43:11,211 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 01:43:11,211 - INFO -       ✅ Published: popular-esports-games-on-twitch
+2026-01-30 01:43:26,212 - INFO -    ✨ Analyzing: Reel Suspects Boards Rotterdam-Bound Hon...
+2026-01-30 01:43:26,582 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:29,205 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:29,206 - INFO - 🎨 Processing Image for: new-esports-drama-series...
+2026-01-30 01:43:29,206 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 01:43:29,356 - INFO -    ✅ Stock Image Applied
+2026-01-30 01:43:29,814 - INFO -    🚀 IndexNow Submitted
+2026-01-30 01:43:29,815 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 01:43:29,816 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 01:43:29,841 - INFO - Refreshing access_token
+2026-01-30 01:43:30,096 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 01:43:30,096 - INFO -       ✅ Published: new-esports-drama-series
+2026-01-30 01:43:45,096 - INFO - 
+📡 Scanning: Pop Culture...
+2026-01-30 01:43:45,692 - INFO -    ✨ Analyzing: A Head-to-Head Showdown Between 2016 and...
+2026-01-30 01:43:46,120 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:48,758 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:48,759 - INFO - 🎨 Processing Image for: then-vs-now...
+2026-01-30 01:43:48,759 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 01:43:48,908 - INFO -    ✅ Stock Image Applied
+2026-01-30 01:43:49,535 - INFO -    🚀 IndexNow Submitted
+2026-01-30 01:43:49,537 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 01:43:49,538 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 01:43:49,564 - INFO - Refreshing access_token
+2026-01-30 01:43:49,791 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 01:43:49,791 - INFO -       ✅ Published: then-vs-now
+2026-01-30 01:44:04,791 - INFO -    ✨ Analyzing: The 15 biggest pop culture moments of 20...
+2026-01-30 01:44:05,044 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:05,045 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 01:44:05,045 - INFO -    ✨ Analyzing: The Official 2026 Pop Culture Ins & Outs...
+2026-01-30 01:44:05,308 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:05,309 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 01:44:05,309 - INFO -    ✨ Analyzing: From uplifting to degrading, here are th...
+2026-01-30 01:44:05,742 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:05,743 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 01:44:05,743 - INFO -    ✨ Analyzing: Why so many people online are leaning in...
+2026-01-30 01:44:06,008 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:08,484 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:08,485 - INFO - 🎨 Processing Image for: online-trends...
+2026-01-30 01:44:08,485 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 01:44:09,045 - INFO -    🚀 IndexNow Submitted
+2026-01-30 01:44:09,047 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 01:44:09,048 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 01:44:09,074 - INFO - Refreshing access_token
+2026-01-30 01:44:09,331 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 01:44:09,331 - INFO -       ✅ Published: online-trends
+2026-01-30 01:44:24,331 - INFO - 🎉 Automation Finished.
