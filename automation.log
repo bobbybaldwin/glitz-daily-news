@@ -877,3 +877,102 @@
 2026-01-30 01:44:09,331 - INFO -    🚀 Google Indexing Submitted
 2026-01-30 01:44:09,331 - INFO -       ✅ Published: online-trends
 2026-01-30 01:44:24,331 - INFO - 🎉 Automation Finished.
+2026-01-30 06:42:06,359 - INFO - 🎬 Starting Glitz Daily Automation (SAFE MODE)...
+2026-01-30 06:42:06,360 - INFO - 
+📡 Scanning: Entertainment US...
+2026-01-30 06:42:06,625 - INFO -    ✨ Analyzing: Did Trump Really Give Nicki Minaj a $1 M...
+2026-01-30 06:42:06,992 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:42:09,786 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:42:09,787 - INFO - 🎨 Processing Image for: trump-and-nicki-minaj-gold-card-scandal...
+2026-01-30 06:42:09,787 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 06:42:10,003 - INFO -    ✅ Stock Image Applied
+2026-01-30 06:42:10,585 - INFO -    🚀 IndexNow Submitted
+2026-01-30 06:42:11,045 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 06:42:11,046 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 06:42:11,072 - INFO - Refreshing access_token
+2026-01-30 06:42:11,411 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 06:42:11,411 - INFO -       ✅ Published: trump-and-nicki-minaj-gold-card-scandal
+2026-01-30 06:42:26,411 - INFO -    ✨ Analyzing: Amazon Blocks Mainstream Press From Watc...
+2026-01-30 06:42:26,695 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:42:29,008 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:42:29,009 - INFO - 🎨 Processing Image for: amazon-blocks-press-from-documentary...
+2026-01-30 06:42:29,009 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 06:42:29,228 - INFO -    ✅ Stock Image Applied
+2026-01-30 06:42:29,844 - INFO -    🚀 IndexNow Submitted
+2026-01-30 06:42:29,846 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 06:42:29,846 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 06:42:29,872 - INFO - Refreshing access_token
+2026-01-30 06:42:30,074 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 06:42:30,074 - INFO -       ✅ Published: amazon-blocks-press-from-documentary
+2026-01-30 06:42:45,074 - INFO - 
+📡 Scanning: Gaming News...
+2026-01-30 06:42:45,663 - INFO -    ✨ Analyzing: Rowdy’s Esports Arena Takes Gaming to An...
+2026-01-30 06:42:46,087 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:42:46,088 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 06:42:46,088 - INFO -    ✨ Analyzing: G 2 Esports, PARIVISION, 3 DMAX keep win...
+2026-01-30 06:42:46,535 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:42:49,194 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:42:49,195 - INFO - 🎨 Processing Image for: esports-teams-keep-winning...
+2026-01-30 06:42:49,195 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 06:42:49,317 - INFO -    ✅ Stock Image Applied
+2026-01-30 06:42:49,732 - INFO -    🚀 IndexNow Submitted
+2026-01-30 06:42:49,734 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 06:42:49,735 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 06:42:49,763 - INFO - Refreshing access_token
+2026-01-30 06:42:50,067 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 06:42:50,067 - INFO -       ✅ Published: esports-teams-keep-winning
+2026-01-30 06:43:05,067 - INFO -    ✨ Analyzing: Top Esports Games on Twitch 2025: CS 2, ...
+2026-01-30 06:43:05,405 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:05,406 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 06:43:05,406 - INFO -    ✨ Analyzing: Reel Suspects Boards Rotterdam-Bound Hon...
+2026-01-30 06:43:05,674 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:08,645 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:08,646 - INFO - 🎨 Processing Image for: esports-drama-gamer-girls...
+2026-01-30 06:43:08,647 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 06:43:08,805 - INFO -    ✅ Stock Image Applied
+2026-01-30 06:43:09,245 - INFO -    🚀 IndexNow Submitted
+2026-01-30 06:43:09,246 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 06:43:09,247 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 06:43:09,273 - INFO - Refreshing access_token
+2026-01-30 06:43:09,569 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 06:43:09,569 - INFO -       ✅ Published: esports-drama-gamer-girls
+2026-01-30 06:43:24,569 - INFO - 
+📡 Scanning: Pop Culture...
+2026-01-30 06:43:25,273 - INFO -    ✨ Analyzing: The 15 biggest pop culture moments of 20...
+2026-01-30 06:43:25,571 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:25,572 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 06:43:25,572 - INFO -    ✨ Analyzing: The Official 2026 Pop Culture Ins & Outs...
+2026-01-30 06:43:25,905 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:28,205 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:28,206 - INFO - 🎨 Processing Image for: pop-culture-insights...
+2026-01-30 06:43:28,206 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 06:43:28,905 - INFO -    🚀 IndexNow Submitted
+2026-01-30 06:43:28,907 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 06:43:28,907 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 06:43:28,933 - INFO - Refreshing access_token
+2026-01-30 06:43:29,220 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 06:43:29,220 - INFO -       ✅ Published: pop-culture-insights
+2026-01-30 06:43:44,220 - INFO -    ✨ Analyzing: From uplifting to degrading, here are th...
+2026-01-30 06:43:44,494 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:44,495 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 06:43:44,495 - INFO -    ✨ Analyzing: The 13 Biggest Pop Culture Moments That ...
+2026-01-30 06:43:44,805 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:44,806 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 06:43:44,806 - INFO -    ✨ Analyzing: Top 100 Pop Culture Trends for 2026...
+2026-01-30 06:43:45,101 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:45,102 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 06:43:45,102 - INFO -    ✨ Analyzing: The Best New Couple, the Worst Threesome...
+2026-01-30 06:43:45,433 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:45,434 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 06:43:45,434 - INFO -    ✨ Analyzing: Why so many people online are leaning in...
+2026-01-30 06:43:45,730 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:48,733 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 06:43:48,734 - INFO - 🎨 Processing Image for: turning-chinese-trend...
+2026-01-30 06:43:48,734 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 06:43:49,248 - INFO -    🚀 IndexNow Submitted
+2026-01-30 06:43:49,250 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 06:43:49,251 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 06:43:49,277 - INFO - Refreshing access_token
+2026-01-30 06:43:49,506 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 06:43:49,506 - INFO -       ✅ Published: turning-chinese-trend
+2026-01-30 06:44:04,506 - INFO - 🎉 Automation Finished.
