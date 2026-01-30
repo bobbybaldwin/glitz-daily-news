@@ -1071,3 +1071,100 @@
 2026-01-30 12:45:03,226 - INFO -    🚀 Google Indexing Submitted
 2026-01-30 12:45:03,226 - INFO -       ✅ Published: best-pop-culture-moments-of-2025
 2026-01-30 12:45:18,226 - INFO - 🎉 Automation Finished.
+2026-01-30 18:35:26,248 - INFO - 🎬 Starting Glitz Daily Automation (SAFE MODE)...
+2026-01-30 18:35:26,248 - INFO - 
+📡 Scanning: Entertainment US...
+2026-01-30 18:35:26,448 - INFO -    ✨ Analyzing: Melania Trump's self-titled documentary ...
+2026-01-30 18:35:26,828 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:35:29,028 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:35:29,029 - INFO - 🎨 Processing Image for: melania-trump-documentary-release...
+2026-01-30 18:35:29,029 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 18:35:29,200 - INFO -    ✅ Stock Image Applied
+2026-01-30 18:35:29,756 - INFO -    🚀 IndexNow Submitted
+2026-01-30 18:35:30,099 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 18:35:30,099 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 18:35:30,125 - INFO - Refreshing access_token
+2026-01-30 18:35:30,592 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 18:35:30,592 - INFO -       ✅ Published: melania-trump-documentary-release
+2026-01-30 18:35:45,592 - INFO -    ✨ Analyzing: 'Bridgerton' Season 4 Boss on Benedict's...
+2026-01-30 18:35:46,033 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:35:46,034 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 18:35:46,034 - INFO -    ✨ Analyzing: See Paul Mescal, Barry Keoghan, and More...
+2026-01-30 18:35:46,263 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:35:48,517 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:35:48,518 - INFO - 🎨 Processing Image for: new-beatles-biopic-first-look...
+2026-01-30 18:35:48,518 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 18:35:48,643 - INFO -    ✅ Stock Image Applied
+2026-01-30 18:35:49,062 - INFO -    🚀 IndexNow Submitted
+2026-01-30 18:35:49,064 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 18:35:49,065 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 18:35:49,091 - INFO - Refreshing access_token
+2026-01-30 18:35:49,408 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 18:35:49,408 - INFO -       ✅ Published: new-beatles-biopic-first-look
+2026-01-30 18:36:04,409 - INFO - 
+📡 Scanning: Gaming News...
+2026-01-30 18:36:05,134 - INFO -    ✨ Analyzing: Rowdy’s Esports Arena Takes Gaming to An...
+2026-01-30 18:36:05,603 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:05,604 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 18:36:05,604 - INFO -    ✨ Analyzing: Mumbai 2025 Global Esports Games World F...
+2026-01-30 18:36:05,841 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:08,188 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:08,188 - INFO - 🎨 Processing Image for: global-esports-games-reach-new-heights...
+2026-01-30 18:36:08,189 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 18:36:09,105 - INFO -    ✅ Stock Image Applied
+2026-01-30 18:36:09,545 - INFO -    🚀 IndexNow Submitted
+2026-01-30 18:36:09,547 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 18:36:09,548 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 18:36:09,573 - INFO - Refreshing access_token
+2026-01-30 18:36:09,854 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 18:36:09,855 - INFO -       ✅ Published: global-esports-games-reach-new-heights
+2026-01-30 18:36:24,855 - INFO -    ✨ Analyzing: Top Esports Games on Twitch 2025: CS 2, ...
+2026-01-30 18:36:25,119 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:27,904 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:27,905 - INFO - 🎨 Processing Image for: popular-esports-games...
+2026-01-30 18:36:27,906 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 18:36:28,023 - INFO -    ✅ Stock Image Applied
+2026-01-30 18:36:28,423 - INFO -    🚀 IndexNow Submitted
+2026-01-30 18:36:28,425 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 18:36:28,425 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 18:36:28,451 - INFO - Refreshing access_token
+2026-01-30 18:36:28,710 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 18:36:28,710 - INFO -       ✅ Published: popular-esports-games
+2026-01-30 18:36:43,711 - INFO - 
+📡 Scanning: Pop Culture...
+2026-01-30 18:36:44,393 - INFO -    ✨ Analyzing: A Head-to-Head Showdown Between 2016 and...
+2026-01-30 18:36:44,678 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:44,679 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 18:36:44,679 - INFO -    ✨ Analyzing: The Official 2026 Pop Culture Ins & Outs...
+2026-01-30 18:36:45,157 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:45,158 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 18:36:45,158 - INFO -    ✨ Analyzing: Top 100 Pop Culture Trends for 2026...
+2026-01-30 18:36:45,398 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:45,399 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 18:36:45,399 - INFO -    ✨ Analyzing: From uplifting to degrading, here are th...
+2026-01-30 18:36:45,606 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:45,607 - INFO -       ⏭️  Skipped (Exists)
+2026-01-30 18:36:45,607 - INFO -    ✨ Analyzing: The Best New Couple, the Worst Threesome...
+2026-01-30 18:36:45,861 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:48,382 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:36:48,383 - INFO - 🎨 Processing Image for: best-new-couple-and-buzziest-pop-culture...
+2026-01-30 18:36:48,383 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 18:36:48,522 - INFO -    ✅ Stock Image Applied
+2026-01-30 18:36:48,970 - INFO -    🚀 IndexNow Submitted
+2026-01-30 18:36:48,972 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 18:36:48,972 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 18:36:48,999 - INFO - Refreshing access_token
+2026-01-30 18:36:49,282 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 18:36:49,283 - INFO -       ✅ Published: best-new-couple-and-buzziest-pop-culture
+2026-01-30 18:37:04,283 - INFO -    ✨ Analyzing: An A-to-Z glossary of pop culture highli...
+2026-01-30 18:37:04,502 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:37:07,022 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 18:37:07,023 - INFO - 🎨 Processing Image for: nostalgic-pop-culture-highlights...
+2026-01-30 18:37:07,023 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-30 18:37:09,771 - INFO -    🚀 IndexNow Submitted
+2026-01-30 18:37:09,773 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-30 18:37:09,773 - INFO - Attempting refresh to obtain initial access_token
+2026-01-30 18:37:09,799 - INFO - Refreshing access_token
+2026-01-30 18:37:10,045 - INFO -    🚀 Google Indexing Submitted
+2026-01-30 18:37:10,045 - INFO -       ✅ Published: nostalgic-pop-culture-highlights
+2026-01-30 18:37:25,045 - INFO - 🎉 Automation Finished.
