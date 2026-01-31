@@ -1373,3 +1373,123 @@
 2026-01-31 06:34:21,003 - INFO -    🚀 Google Indexing Submitted
 2026-01-31 06:34:21,003 - INFO -       ✅ Published: beauty-and-fashion-trends
 2026-01-31 06:34:36,003 - INFO - 🎉 Automation Finished.
+2026-01-31 12:37:24,885 - INFO - 🎬 Starting Glitz Daily Automation (SAFE MODE)...
+2026-01-31 12:37:24,885 - INFO - 
+📡 Scanning: Entertainment US...
+2026-01-31 12:37:25,113 - INFO -    ✨ Analyzing: Catherine O'Hara, Emmy-winning comic act...
+2026-01-31 12:37:25,636 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:28,317 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:28,318 - INFO - 🎨 Processing Image for: beloved-comic-actor-passes-away...
+2026-01-31 12:37:28,318 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-31 12:37:28,625 - INFO -    ✅ Stock Image Applied
+2026-01-31 12:37:29,344 - INFO -    🚀 IndexNow Submitted
+2026-01-31 12:37:29,795 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-31 12:37:29,796 - INFO - Attempting refresh to obtain initial access_token
+2026-01-31 12:37:29,822 - INFO - Refreshing access_token
+2026-01-31 12:37:30,148 - INFO -    🚀 Google Indexing Submitted
+2026-01-31 12:37:30,148 - INFO -       ✅ Published: beloved-comic-actor-passes-away
+2026-01-31 12:37:45,148 - INFO -    ✨ Analyzing: Melania Trump — her doppelganger — makes...
+2026-01-31 12:37:45,578 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:45,579 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:37:45,579 - INFO - 
+📡 Scanning: Gaming News...
+2026-01-31 12:37:46,164 - INFO -    ✨ Analyzing: Rowdy’s Esports Arena Takes Gaming to An...
+2026-01-31 12:37:46,578 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:46,579 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:37:46,579 - INFO -    ✨ Analyzing: Mumbai 2025 Global Esports Games World F...
+2026-01-31 12:37:46,897 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:46,898 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:37:46,899 - INFO -    ✨ Analyzing: Olathe Public Schools hosts first Esport...
+2026-01-31 12:37:47,223 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:47,224 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:37:47,224 - INFO -    ✨ Analyzing: Top Esports Games on Twitch 2025: CS 2, ...
+2026-01-31 12:37:47,659 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:47,660 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:37:47,660 - INFO -    ✨ Analyzing: G 2 Esports, PARIVISION, 3 DMAX keep win...
+2026-01-31 12:37:48,087 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:48,088 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:37:48,088 - INFO -    ✨ Analyzing: Bin’s future unclear as BLG promote Wenb...
+2026-01-31 12:37:48,512 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:50,969 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:37:50,970 - INFO - 🎨 Processing Image for: gaming-news-update...
+2026-01-31 12:37:50,970 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-31 12:37:51,166 - INFO -    ✅ Stock Image Applied
+2026-01-31 12:37:51,671 - INFO -    🚀 IndexNow Submitted
+2026-01-31 12:37:51,673 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-31 12:37:51,674 - INFO - Attempting refresh to obtain initial access_token
+2026-01-31 12:37:51,699 - INFO - Refreshing access_token
+2026-01-31 12:37:52,005 - INFO -    🚀 Google Indexing Submitted
+2026-01-31 12:37:52,005 - INFO -       ✅ Published: gaming-news-update
+2026-01-31 12:38:07,005 - INFO -    ✨ Analyzing: Saudi Esports Federation signs deals wit...
+2026-01-31 12:38:07,417 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:09,698 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:09,699 - INFO - 🎨 Processing Image for: saudi-esports-federation-partners-with-yalla-group...
+2026-01-31 12:38:09,699 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-31 12:38:09,843 - INFO -    ✅ Stock Image Applied
+2026-01-31 12:38:10,336 - INFO -    🚀 IndexNow Submitted
+2026-01-31 12:38:10,338 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-31 12:38:10,338 - INFO - Attempting refresh to obtain initial access_token
+2026-01-31 12:38:10,364 - INFO - Refreshing access_token
+2026-01-31 12:38:10,687 - INFO -    🚀 Google Indexing Submitted
+2026-01-31 12:38:10,687 - INFO -       ✅ Published: saudi-esports-federation-partners-with-yalla-group
+2026-01-31 12:38:25,687 - INFO - 
+📡 Scanning: Pop Culture...
+2026-01-31 12:38:26,438 - INFO -    ✨ Analyzing: A Head-to-Head Showdown Between 2016 and...
+2026-01-31 12:38:26,762 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:26,763 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:26,763 - INFO -    ✨ Analyzing: The 15 biggest pop culture moments of 20...
+2026-01-31 12:38:27,059 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:27,060 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:27,060 - INFO -    ✨ Analyzing: 2016 trends from Pokemon Go to poke bowl...
+2026-01-31 12:38:27,468 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:29,923 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:29,924 - INFO - 🎨 Processing Image for: viral-trends-of-2016...
+2026-01-31 12:38:29,924 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-31 12:38:31,063 - INFO -    🚀 IndexNow Submitted
+2026-01-31 12:38:31,064 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-31 12:38:31,065 - INFO - Attempting refresh to obtain initial access_token
+2026-01-31 12:38:31,091 - INFO - Refreshing access_token
+2026-01-31 12:38:31,403 - INFO -    🚀 Google Indexing Submitted
+2026-01-31 12:38:31,403 - INFO -       ✅ Published: viral-trends-of-2016
+2026-01-31 12:38:46,403 - INFO -    ✨ Analyzing: The Official 2026 Pop Culture Ins & Outs...
+2026-01-31 12:38:46,749 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:46,755 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:46,756 - INFO -    ✨ Analyzing: Top 100 Pop Culture Trends for 2026...
+2026-01-31 12:38:47,189 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:47,190 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:47,190 - INFO -    ✨ Analyzing: From uplifting to degrading, here are th...
+2026-01-31 12:38:47,584 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:47,585 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:47,585 - INFO -    ✨ Analyzing: The Best New Couple, the Worst Threesome...
+2026-01-31 12:38:48,002 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:48,003 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:48,003 - INFO -    ✨ Analyzing: An A-to-Z glossary of pop culture highli...
+2026-01-31 12:38:48,312 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:48,313 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:48,313 - INFO -    ✨ Analyzing: The 13 Biggest Pop Culture Moments That ...
+2026-01-31 12:38:48,641 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:48,642 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:48,642 - INFO -    ✨ Analyzing: The 25 Best TV Shows, Movies, and Pop Cu...
+2026-01-31 12:38:48,980 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:48,985 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:48,985 - INFO -    ✨ Analyzing: The Good, the Bad and the Chalamet: Thes...
+2026-01-31 12:38:49,401 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:49,402 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:49,402 - INFO -    ✨ Analyzing: Why so many people online are leaning in...
+2026-01-31 12:38:49,719 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:49,719 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:49,720 - INFO -    ✨ Analyzing: The 2016 Beauty and Fashion Trends the I...
+2026-01-31 12:38:50,034 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:50,034 - INFO -       ⏭️  Skipped (Exists)
+2026-01-31 12:38:50,034 - INFO -    ✨ Analyzing: 6 Gen Z Pop Culture Moments for Brands t...
+2026-01-31 12:38:50,366 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:52,944 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-31 12:38:52,945 - INFO - 🎨 Processing Image for: gen-z-pop-culture-trends-to-watch...
+2026-01-31 12:38:52,945 - INFO -    📸 Fetching High-Quality Stock Image (Unsplash)...
+2026-01-31 12:38:53,669 - INFO -    🚀 IndexNow Submitted
+2026-01-31 12:38:53,671 - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-01-31 12:38:53,671 - INFO - Attempting refresh to obtain initial access_token
+2026-01-31 12:38:53,697 - INFO - Refreshing access_token
+2026-01-31 12:38:53,901 - INFO -    🚀 Google Indexing Submitted
+2026-01-31 12:38:53,901 - INFO -       ✅ Published: gen-z-pop-culture-trends-to-watch
+2026-01-31 12:39:08,901 - INFO - 🎉 Automation Finished.
